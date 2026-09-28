@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO -->
+    <title>The Mokawa Story | From Vision to Reality | Martin Muriithi Journey</title>
+    <meta name="description" content="The inspiring journey of Martin Muriithi Wanyiri from CCO to Founder & CEO of Mokawa Hospitality Group. Managing hotels across Kenya with 100+ team members.">
+    <meta name="keywords" content="Martin Muriithi, Mokawa founder, hospitality entrepreneur Kenya, hotel management success story, African hospitality leader">
+    <meta name="developer" content="This website is managed and developed by Megzier Group Ltd">
+    <meta name="designer" content="Megzier Group Ltd">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/logo_ABOUT.jpg">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/logo-enhancement.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Story Hero */
+        .story-hero {
+            height: 70vh;
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.9), rgba(37, 37, 37, 0.8)),
+                        url('images/martin-president.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 2rem 5%;
+        }
+        
+        .story-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .story-hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* Chapter Sections */
+        .chapter-section {
+            padding: 5rem 5%;
+        }
+        
+        .chapter-section:nth-child(even) {
+            background: var(--beige-light);
+        }
+        
+        .chapter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .chapter-container.reverse {
+            direction: rtl;
+        }
+        
+        .chapter-container.reverse > * {
+            direction: ltr;
+        }
+        
+        .chapter-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        
+        .chapter-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .chapter-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .chapter-content h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .chapter-content .chapter-subtitle {
+            font-size: 1.3rem;
+            color: var(--primary-gold);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .chapter-content p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+        }
+        
+        .chapter-quote {
+            border-left: 4px solid var(--primary-gold);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+        
+        /* Stats Grid */
+        .story-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .story-stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .story-stat h3 {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .story-stat p {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            padding: 6rem 5%;
+            background: var(--beige-light);
+        }
+        
+        .timeline {
+            max-width: 1000px;
+            margin: 4rem auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary-gold);
+        }
+        
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 4px var(--primary-gold);
+        }
+        
+        .timeline-content {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:first-child {
+            grid-column: 2;
+        }
+        
+        .timeline-date {
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        /* Call to Action */
+        .story-cta {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--primary-gold), var(--text-dark));
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .story-cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .chapter-container,
+            .chapter-container.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+            
+            .chapter-image {
+                height: 300px;
+            }
+            
+            .story-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                grid-template-columns: 1fr;
+                padding-left: 60px;
+            }
+            
+            .timeline-item::before {
+                left: 20px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content:first-child {
+                grid-column: 1;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="css/mobile-responsive-fix.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L30QNK1ZG8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L30QNK1ZG8');
+</script>
+<body>
+    <!-- Navigation -->
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-logo">
+                <a href="index.html">
+                    <img src="images/logo.jpg" alt="Mokawa Group">
+                </a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mokawa-story.html" class="active">Mokawa Story</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li class="dropdown">
+                    <a href="index.html#portfolio">Portfolio</a>
+                    <div class="dropdown-menu">
+                        <a href="hotels/silver-rock.html">
+                            <i class="fas fa-umbrella-beach"></i> Silver Rock Boutique Resort
+                        </a>
+                        <a href="hotels/paradise-farm.html">
+                            <i class="fas fa-mountain"></i> Paradise Farm Cottages
+                        </a>
+                    </div>
+                </li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero -->
+    <section class="story-hero">
+        <div>
+            <h1 data-aos="fade-up">From Chairman to CEO</h1>
+            <p data-aos="fade-up" data-aos-delay="200">
+                The journey of building Africa's next great hospitality brand — one property, one dream, one vision at a time.
+            </p>
+        </div>
+    </section>
+
+    <!-- Chapter 1: The Beginning -->
+    <section class="chapter-section">
+        <div class="chapter-container">
+            <div class="chapter-image" data-aos="fade-right">
+                <img src="images/martin-bio.jpg" alt="Martin Muriithi Wanyiri">
+            </div>
+            <div class="chapter-content" data-aos="fade-left">
+                <h2>The Dream Begins</h2>
+                <p class="chapter-subtitle">From Humble Beginnings to Bold Vision</p>
+                <p>
+                    Born and raised in Ongata Rongai, Kajiado, Martin Muriithi Wanyiri grew up with one fear: poverty. 
+                    That fear became his fuel. Through sheer determination and relentless work ethic, he transformed 
+                    that fear into a driving force for success.
+                </p>
+                <p>
+                    Before founding Mokawa, Martin served as Chief Commercial Officer – Africa for a Norwegian 
+                    e-commerce firm for 7 years, and prior to that as Sales Director at Nairobi Safari Club Hotel. 
+                    But the entrepreneurial fire burned brighter than any paycheck.
+                </p>
+                <div class="chapter-quote">
+                    "The only fear I had growing up was poverty. By God's grace, I beat that fear. Today, I own my 
+                    mansion, my cars, my life — all fully funded by sheer hard work."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 2: The Leap -->
+    <section class="chapter-section">
+        <div class="chapter-container reverse">
+            <div class="chapter-image" data-aos="fade-left">
+                <img src="images/martin-founder.jpeg" alt="Martin Muriithi - Founder">
+            </div>
+            <div class="chapter-content" data-aos="fade-right">
+                <h2>A New Chapter Begins</h2>
+                <p class="chapter-subtitle">From Chairman to Founder & CEO</p>
+                <p>
+                    Six years ago, Martin joined a company with a dream: to help build something that would shape 
+                    the hospitality landscape in Africa. He traveled, scaled, opened doors, and closed deals. 
+                    Property by property, country by country, he gave it everything.
+                </p>
+                <p>
+                    Many knew him as "Chairman." But in 2024, Martin made his boldest move yet — launching 
+                    <strong>Mokawa Hospitality Group</strong> as Founder & CEO.
+                </p>
+                <div class="chapter-quote">
+                    "The pen is now in my hands. I'm excited (and a little emotional) to announce that I've launched 
+                    my own company — where I now serve as Founder & CEO. Yes, the Chairman now signs in as CEO. God did it."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="chapter-section" style="padding: 4rem 5%;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="story-stats">
+                <div class="story-stat" data-aos="fade-up">
+                    <h3>4+</h3>
+                    <p>Hotels Managed</p>
+                </div>
+                <div class="story-stat" data-aos="fade-up" data-aos-delay="100">
+                    <h3>100+</h3>
+                    <p>Team Members</p>
+                </div>
+                <div class="story-stat" data-aos="fade-up" data-aos-delay="200">
+                    <h3>3</h3>
+                    <p>Cities</p>
+                </div>
+                <div class="story-stat" data-aos="fade-up" data-aos-delay="300">
+                    <h3>2024</h3>
+                    <p>Founded</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 3: The Vision -->
+    <section class="chapter-section">
+        <div class="chapter-container">
+            <div class="chapter-image" data-aos="fade-right">
+                <img src="images/martin-profile.jpeg" alt="Martin Muriithi CEO">
+            </div>
+            <div class="chapter-content" data-aos="fade-left">
+                <h2>Building Mokawa</h2>
+                <p class="chapter-subtitle">More Than Hotels — A Movement</p>
+                <p>
+                    Today, Mokawa proudly manages boutique hotels across Nairobi, Nyeri, and Malindi. Under Martin's 
+                    leadership, over 100+ dedicated professionals — chefs, housekeepers, receptionists, security guards, 
+                    hotel managers, accountants, and a brilliant sales team — are united by one mission: to elevate 
+                    hospitality through culture, class, and care.
+                </p>
+                <p>
+                    Mokawa is more than a business — it's a bold move to redefine boutique hospitality across Africa. 
+                    From coastal retreats to city escapes, we are leasing and managing beautiful properties with heart, 
+                    heritage, and high standards.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <h2 class="section-title" style="text-align: center;" data-aos="fade-up">The Journey</h2>
+        <div class="section-divider" data-aos="fade-up" style="margin: 2rem auto;"></div>
+        
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-content">
+                    <div class="timeline-date">2024</div>
+                    <h3>Mokawa Founded</h3>
+                    <p>Martin launches Mokawa Hospitality Group, taking the leap from employee to entrepreneur.</p>
+                </div>
+                <div></div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-up">
+                <div></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Q1 2024</div>
+                    <h3>First Properties Acquired</h3>
+                    <p>Silver Rock Boutique Resort (Malindi) and Eldon Villas (Nairobi - previously managed) join the portfolio, marking Mokawa's entry into hospitality management.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-content">
+                    <div class="timeline-date">6 Months Later</div>
+                    <h3>Paradise Farm Cottage</h3>
+                    <p>Mokawa signs Paradise Farm Cottage in Nyeri — expanding operations to the highlands.</p>
+                </div>
+                <div></div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-up">
+                <div></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2025</div>
+                    <h3>Growing the Portfolio</h3>
+                    <p>Mokawa also partnered with Kiikalloh Grand Resort in Machakos for a period, bringing serene hospitality to the region (partnership since ended).</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-content">
+                    <div class="timeline-date">Today</div>
+                    <h3>100+ Team Members Strong</h3>
+                    <p>Mokawa now manages 3 properties and employs over 100 professionals across Kenya, serving guests daily.</p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Team -->
+    <section class="chapter-section">
+        <div class="chapter-container">
+            <div class="chapter-image" data-aos="fade-right">
+                <img src="images/martin-wanjiku.jpeg" alt="Martin and Mary Wanjiku">
+            </div>
+            <div class="chapter-content" data-aos="fade-left">
+                <h2>The Team Behind the Vision</h2>
+                <p class="chapter-subtitle">Leadership That Delivers</p>
+                <p>
+                    <strong>Martin Muriithi Wanyiri</strong> — Founder & CEO<br>
+                    A husband, father of three, and hospitality veteran with over 15 years of experience in sales, 
+                    operations, and business development across Africa.
+                </p>
+                <p>
+                    <strong>Mary Wanjiku</strong> — Head of Operations<br>
+                    A seasoned hospitality professional with deep expertise in hotel management, staff training, 
+                    and quality standards implementation.
+                </p>
+                <p>
+                    Together, they lead a team committed to excellence, authenticity, and African hospitality at its finest.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="story-cta">
+        <div data-aos="fade-up">
+            <h2>Join the Journey</h2>
+            <p>
+                We're looking for properties ready to be transformed and partners ready to grow. 
+                Whether you own a hotel or want to invest in hospitality, let's build something remarkable together.
+            </p>
+            <a href="index.html#contact" class="btn-primary" style="margin-top: 2rem;">
+                Partner With Us <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <img src="images/logo_footer.svg" alt="Mokawa Group" style="height: 60px; margin-bottom: 1rem;">
+                <p>Rooted in Culture, Designed to Deliver</p>
+                <div class="social-links">
+                    <a href="https://web.facebook.com/p/Mokawa-Group-61579083631536/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://ke.linkedin.com/company/mokawa-hospitality-management" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mokawa-story.html">Mokawa Story</a></li>
+                    <li><a href="index.html#properties">Our Properties</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +254 738 014 791</li>
+                    <li><i class="fas fa-envelope"></i> martin@mokawagroup.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mokawa Group Ltd. All rights reserved. Website managed and developed by Megzier Group Ltd.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+/* ========================================
+   FINAL MOBILE & BACKGROUND FIXES
+   ======================================== */
+
+/* ========== MOBILE FONT SIZE REDUCTIONS ========== */
+@media (max-width: 768px) {
+    body { font-size: 14px !important; }
+    
+    /* Hero Section - SMALLER */
+    .hero-company { font-size: 0.8rem !important; letter-spacing: 2px !important; }
+    .hero-title { font-size: 1.6rem !important; line-height: 1.2 !important; margin-bottom: 0.8rem !important; }
+    .hero-subtitle { font-size: 0.8rem !important; margin-bottom: 0.8rem !important; }
+    .hero-description { font-size: 0.75rem !important; line-height: 1.4 !important; margin-bottom: 1.5rem !important; }
+    .hero { min-height: 600px !important; padding: 1rem 0 !important; }
+    
+    /* Section Titles - SMALLER */
+    .section-title { font-size: 1.4rem !important; margin-bottom: 0.8rem !important; }
+    .section-subtitle { font-size: 0.8rem !important; line-height: 1.5 !important; }
+    
+    /* Property Cards - COMPACT */
+    .property-title { font-size: 1.3rem !important; }
+    .property-tagline { font-size: 0.8rem !important; }
+    .property-description { font-size: 0.75rem !important; line-height: 1.4 !important; }
+    
+    /* Cards - SMALLER PADDING */
+    .amenity-card, .room-type-card, .value-bubble {
+        padding: 1rem 0.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    .amenity-card h3, .room-type-card h3 { font-size: 1rem !important; margin: 0.5rem 0 !important; }
+    .amenity-card p, .room-type-card p { font-size: 0.75rem !important; line-height: 1.4 !important; }
+    .amenity-card i, .room-type-card i { font-size: 1.8rem !important; }
+    
+    /* Services Zigzag - COMPACT */
+    .zigzag-content h3 { font-size: 1.1rem !important; }
+    .zigzag-content p { font-size: 0.75rem !important; line-height: 1.4 !important; }
+    .zigzag-number { font-size: 2.5rem !important; }
+    .zigzag-icon { width: 60px !important; height: 60px !important; font-size: 1.5rem !important; }
+    
+    /* Team Section - COMPACT */
+    .team-split-content h3 { font-size: 1.2rem !important; }
+    .team-split-content p, .team-split-content span { font-size: 0.75rem !important; }
+    .team-avatar { width: 100px !important; height: 100px !important; font-size: 3rem !important; }
+    
+    /* Buttons - NORMAL SIZE */
+    .btn-primary, .btn-secondary, .btn-tertiary {
+        padding: 0.9rem 1.5rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    /* Stats - SMALLER */
+    .stat-card h3 { font-size: 2rem !important; }
+    .stat-card p { font-size: 0.8rem !important; }
+}
+
+/* ========== MAKE BACKGROUNDS FULLY VISIBLE ========== */
+/* NO MORE FADING - Images must be SEEN! */
+
+.amenities-section::before {
+    opacity: 0.55 !important;  /* Was 0.18, now MUCH more visible */
+    filter: brightness(1.15) contrast(1.05) !important;
+}
+
+.room-types-section::before {
+    opacity: 0.50 !important;  /* Was 0.15, now MUCH more visible */
+    filter: brightness(1.15) contrast(1.05) !important;
+}
+
+.services-background img {
+    opacity: 0.45 !important;  /* More visible */
+    filter: brightness(1.2) contrast(1.05) !important;
+}
+
+/* Add backgrounds to sections that don't have them */
+.values-organic {
+    background-image: url('../images/background-img02.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    position: relative;
+}
+
+.values-organic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 0;
+}
+
+.values-organic > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Stats Section Background */
+.stats-section {
+    background-image: url('../images/BACKGROUND-img01.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+}
+
+/* Hotel Rating Stars */
+.hotel-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    color: #FFD700;
+}
+
+.hotel-rating .rating-text {
+    color: var(--white);
+    font-weight: 600;
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Hero Buttons Container */
+.hero-content .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.hero-content .btn-tertiary {
+    background: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+
+.hero-content .btn-tertiary:hover {
+    background: var(--white);
+    color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+    .hero-content .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 2rem;
+    }
+    
+    .hero-content .hero-buttons a {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .hotel-rating {
+        font-size: 1rem;
+    }
+    
+    .hotel-rating .rating-text {
+        font-size: 0.9rem;
+    }
+}

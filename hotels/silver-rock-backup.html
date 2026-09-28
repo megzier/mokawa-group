@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Rock Boutique Resort | Mokawa Group - Malindi Beachfront Hotel</title>
+    <meta name="developer" content="This website is managed and developed by Megzier Group Ltd">
+    <meta name="designer" content="Megzier Group Ltd">
+    <meta name="description" content="Silver Rock Boutique Resort Malindi - Award-winning beachfront hotel. Best-in-Class Heritage Hospitality 2024. Book now!">
+    <link rel="icon" type="image/jpeg" href="../images/logo_ABOUT.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        :root {
+            --primary-gold: #C9A961;
+            --gold-dark: #8B6F47;
+            --ocean-blue: #0077BE;
+            --text-dark: #2C1810;
+            --text-light: #6B5446;
+        }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; }
+        .luxury-hero { position: relative; height: 100vh; overflow: hidden; }
+        .hero-slider { position: absolute; width: 100%; height: 100%; }
+        .hero-slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
+        .hero-slide.active { opacity: 1; }
+        .hero-slide::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0,119,190,0.5), rgba(0,0,0,0.4)); }
+        .hero-content-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 10; width: 90%; max-width: 1200px; }
+        .hero-logo { width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 2rem; border: 4px solid var(--primary-gold); box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 300; margin-bottom: 1rem; letter-spacing: 3px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .hero-subtitle { font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: var(--primary-gold); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 1rem; font-weight: 300; }
+        .hero-tagline { font-size: clamp(1rem, 2vw, 1.3rem); margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+        .hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .hero-btn { padding: 1rem 2.5rem; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; cursor: pointer; }
+        .hero-btn-primary { background: #25D366; color: white; }
+        .hero-btn-primary:hover { background: #20BD5A; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); }
+        .hero-btn-secondary { background: transparent; border: 2px solid var(--primary-gold); color: white; }
+        .hero-btn-secondary:hover { background: var(--primary-gold); transform: translateY(-3px); }
+        .stats-luxury { background: linear-gradient(135deg, #1a1410 0%, #2C2416 100%); padding: 5rem 5%; position: relative; }
+        .stats-luxury::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--primary-gold), transparent); }
+        .stats-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; }
+        .stat-luxury-card { text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(201,169,97,0.1), rgba(139,111,71,0.05)); border: 1px solid rgba(201,169,97,0.2); border-radius: 15px; transition: all 0.4s ease; position: relative; }
+        .stat-luxury-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--primary-gold), transparent); opacity: 0; transition: opacity 0.3s ease; }
+        .stat-luxury-card:hover { transform: translateY(-10px); border-color: var(--primary-gold); box-shadow: 0 20px 50px rgba(201,169,97,0.2); }
+        .stat-luxury-card:hover::before { opacity: 1; }
+        .stat-icon-luxury { width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--primary-gold), var(--gold-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; box-shadow: 0 10px 30px rgba(201,169,97,0.3); }
+        .stat-number-luxury { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 700; color: var(--primary-gold); line-height: 1; margin-bottom: 0.5rem; }
+        .stat-label-luxury { font-size: 1.1rem; color: #ccc; text-transform: uppercase; letter-spacing: 2px; }
+        .award-badge { background: linear-gradient(135deg, var(--primary-gold), var(--gold-dark)); color: white; padding: 1.5rem 2.5rem; border-radius: 15px; text-align: center; margin: 3rem auto; max-width: 600px; box-shadow: 0 10px 40px rgba(201,169,97,0.3); }
+        .award-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .award-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .award-year { font-size: 1.1rem; opacity: 0.9; }
+        .about-luxury { padding: 7rem 5%; background: white; }
+        .about-content { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .section-title-luxury { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--text-dark); margin-bottom: 1rem; font-weight: 300; letter-spacing: 2px; }
+        .section-subtitle { font-size: 1.2rem; color: var(--primary-gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 2rem; }
+        .divider-luxury { width: 100px; height: 3px; background: linear-gradient(90deg, transparent, var(--primary-gold), transparent); margin: 2rem auto; }
+        .about-text { font-size: 1.1rem; line-height: 1.9; color: var(--text-light); max-width: 900px; margin: 0 auto 1.5rem; }
+        .features-luxury-section { padding: 7rem 5%; background: linear-gradient(135deg, #f8f6f3 0%, #ffffff 100%); }
+        .features-grid-luxury { max-width: 1400px; margin: 3rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; }
+        .feature-luxury-card { background: white; padding: 3rem 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: center; transition: all 0.4s ease; border-top: 4px solid var(--ocean-blue); }
+        .feature-luxury-card:hover { transform: translateY(-15px); box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+        .feature-icon-luxury { font-size: 3.5rem; color: var(--ocean-blue); margin-bottom: 1.5rem; }
+        .feature-title-luxury { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem; }
+        .feature-text-luxury { font-size: 1rem; line-height: 1.7; color: var(--text-light); }
+        .gallery-luxury { padding: 7rem 5%; background: #1a1410; }
+        .gallery-luxury .section-title-luxury { color: white; }
+        .gallery-grid-luxury { max-width: 1600px; margin: 3rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
+        .gallery-item-luxury { position: relative; height: 350px; border-radius: 0; overflow: hidden; cursor: pointer; box-shadow: none; display: block; }
+        .gallery-item-luxury img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-item-luxury:hover img { transform: scale(1.05); }
+        .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 2rem; opacity: 0; transition: opacity 0.4s ease; }
+        .gallery-item-luxury:hover .gallery-overlay { opacity: 1; }
+        .gallery-title { color: white; font-size: 1.3rem; font-weight: 600; }
+        .cta-luxury { padding: 7rem 5%; background: linear-gradient(135deg, var(--ocean-blue), #0099DD); text-align: center; color: white; }
+        .cta-luxury .section-title-luxury { color: white; }
+        .cta-text { font-size: 1.3rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        @media (max-width: 768px) {
+            .stats-container, .features-grid-luxury, .gallery-grid-luxury { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-logo">
+                <a href="../index.html">
+                    <img src="../images/logo.jpg" alt="Mokawa Group Logo">
+                </a>
+            </div>
+            
+            <ul class="navbar-menu">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../mokawa-story.html">Mokawa Story</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li class="dropdown">
+                    <a href="../index.html#portfolio">Portfolio</a>
+                    <div class="dropdown-menu">
+                        <a href="silver-rock.html">
+                            <i class="fas fa-umbrella-beach"></i> Silver Rock Boutique Resort - Malindi
+                        </a>
+                        <a href="paradise-farm.html">
+                            <i class="fas fa-mountain"></i> Paradise Farm Cottages - Nyeri
+                        </a>
+                    </div>
+                </li>
+                <li><a href="../services.html">Services</a></li>
+                <li><a href="../index.html#team">Team</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="luxury-hero">
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('../images/Silver_Rock-98__1_.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('../images/Silver_Rock-13-new.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('../images/Silver_Rock-2__2_.jpg');"></div>
+        </div>
+        <div class="hero-content-overlay">
+            <img src="../images/silver-rock-logo.png" alt="Silver Rock" class="hero-logo">
+            <h1 class="hero-title">Silver Rock Boutique Resort</h1>
+            <p class="hero-subtitle">Experience Coastal Luxury</p>
+            <p class="hero-tagline">Nestled on pristine Malindi shores - Winner of Best-in-Class Heritage Hospitality Awards 2024</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/254738014791" class="hero-btn hero-btn-primary"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+                <a href="tel:+254738014791" class="hero-btn hero-btn-secondary"><i class="fas fa-phone"></i> Call Now</a>
+                <a href="mailto:silverrockhotelfo@gmail.com" class="hero-btn hero-btn-secondary"><i class="fas fa-envelope"></i> Email Us</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-luxury">
+        <div class="stats-container">
+            <div class="stat-luxury-card">
+                <div class="stat-icon-luxury"><i class="fas fa-bed"></i></div>
+                <div class="stat-number-luxury">45</div>
+                <div class="stat-label-luxury">Luxury Rooms</div>
+            </div>
+            <div class="stat-luxury-card">
+                <div class="stat-icon-luxury"><i class="fas fa-swimming-pool"></i></div>
+                <div class="stat-number-luxury">2</div>
+                <div class="stat-label-luxury">Swimming Pools</div>
+            </div>
+            <div class="stat-luxury-card">
+                <div class="stat-icon-luxury"><i class="fas fa-utensils"></i></div>
+                <div class="stat-number-luxury">3</div>
+                <div class="stat-label-luxury">Restaurants</div>
+            </div>
+            <div class="stat-luxury-card">
+                <div class="stat-icon-luxury"><i class="fas fa-spa"></i></div>
+                <div class="stat-number-luxury">1</div>
+                <div class="stat-label-luxury">Spa</div>
+            </div>
+        </div>
+        <div class="award-badge">
+            <div class="award-icon"><i class="fas fa-award"></i></div>
+            <div class="award-title">Best-in-Class Heritage Hospitality</div>
+            <div class="award-year">Winner 2024</div>
+        </div>
+    </section>
+
+    <section class="about-luxury">
+        <div class="about-content">
+            <p class="section-subtitle">Welcome To</p>
+            <h2 class="section-title-luxury">Silver Rock Boutique Resort</h2>
+            <div class="divider-luxury"></div>
+            <p class="about-text">Nestled on the pristine shores of Malindi, Silver Rock Boutique Resort stands as a beacon of coastal luxury and exceptional hospitality. Winner of the Best-in-Class Heritage Hospitality Awards 2024, we offer an unparalleled beachfront experience.</p>
+            <p class="about-text">Experience the perfect blend of modern luxury and traditional Swahili hospitality. From our boutique in-house spa to our ocean-view restaurant serving fresh coastal cuisine, every detail is crafted to create unforgettable memories.</p>
+        </div>
+    </section>
+
+    <section class="features-luxury-section">
+        <div class="about-content">
+            <p class="section-subtitle">Exceptional</p>
+            <h2 class="section-title-luxury">Resort Amenities</h2>
+            <div class="divider-luxury"></div>
+        </div>
+        <div class="features-grid-luxury">
+            <div class="feature-luxury-card">
+                <div class="feature-icon-luxury"><i class="fas fa-umbrella-beach"></i></div>
+                <h3 class="feature-title-luxury">Private Beach Access</h3>
+                <p class="feature-text-luxury">Exclusive access to pristine white sand beaches with crystal-clear waters, perfect for relaxation and water sports.</p>
+            </div>
+            <div class="feature-luxury-card">
+                <div class="feature-icon-luxury"><i class="fas fa-spa"></i></div>
+                <h3 class="feature-title-luxury">Boutique Spa</h3>
+                <p class="feature-text-luxury">Discover serenity with Swedish massage, aromatherapy, body scrubs, and facial treatments.</p>
+            </div>
+            <div class="feature-luxury-card">
+                <div class="feature-icon-luxury"><i class="fas fa-utensils"></i></div>
+                <h3 class="feature-title-luxury">Ocean-View Dining</h3>
+                <p class="feature-text-luxury">Savor fresh coastal cuisine at three restaurants with breathtaking ocean views.</p>
+            </div>
+            <div class="feature-luxury-card">
+                <div class="feature-icon-luxury"><i class="fas fa-swimming-pool"></i></div>
+                <h3 class="feature-title-luxury">Two Swimming Pools</h3>
+                <p class="feature-text-luxury">Refresh in adult and children's pools with stunning beachfront views.</p>
+            </div>
+            <div class="feature-luxury-card">
+                <div class="feature-icon-luxury"><i class="fas fa-wifi"></i></div>
+                <h3 class="feature-title-luxury">Complimentary WiFi</h3>
+                <p class="feature-text-luxury">Stay connected with high-speed internet throughout the resort.</p>
+            </div>
+            <div class="feature-luxury-card">
+                <div class="feature-icon-luxury"><i class="fas fa-users"></i></div>
+                <h3 class="feature-title-luxury">Conference Facilities</h3>
+                <p class="feature-text-luxury">Professional meeting rooms and event spaces with ocean views.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-luxury">
+        <div class="about-content">
+            <p class="section-subtitle" style="color: var(--primary-gold);">Discover</p>
+            <h2 class="section-title-luxury">Resort Gallery</h2>
+            <div class="divider-luxury"></div>
+        </div>
+        <div class="gallery-grid-luxury">
+            <a href="../images/Silver_Rock-98__1_.jpg" target="_blank" class="gallery-item-luxury">
+                <img src="../images/Silver_Rock-98__1_.jpg" alt="Resort">
+                <div class="gallery-overlay"><div class="gallery-title">Beachfront Paradise</div></div>
+            </a>
+            <a href="../images/Silver_Rock-13-new.jpg" target="_blank" class="gallery-item-luxury">
+                <img src="../images/Silver_Rock-13-new.jpg" alt="Pool">
+                <div class="gallery-overlay"><div class="gallery-title">Infinity Pool</div></div>
+            </a>
+            <a href="../images/Silver_Rock-2__2_.jpg" target="_blank" class="gallery-item-luxury">
+                <img src="../images/Silver_Rock-2__2_.jpg" alt="Ocean">
+                <div class="gallery-overlay"><div class="gallery-title">Ocean Views</div></div>
+            </a>
+            <a href="../images/Silver_Rock-7.jpg" target="_blank" class="gallery-item-luxury">
+                <img src="../images/Silver_Rock-7.jpg" alt="Gardens">
+                <div class="gallery-overlay"><div class="gallery-title">Lush Gardens</div></div>
+            </a>
+            <a href="../images/Silver_Rock-13.jpg" target="_blank" class="gallery-item-luxury">
+                <img src="../images/Silver_Rock-13.jpg" alt="Facilities">
+                <div class="gallery-overlay"><div class="gallery-title">Resort Facilities</div></div>
+            </a>
+        </div>
+    </section>
+
+    <section class="cta-luxury">
+        <h2 class="section-title-luxury">Ready to Experience Coastal Excellence?</h2>
+        <p class="cta-text">Book your stay at Silver Rock Boutique Resort - Malindi's premier beachfront destination</p>
+        <div class="hero-buttons">
+            <a href="https://wa.me/254738014791" class="hero-btn hero-btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp: 0738 014 791</a>
+            <a href="tel:+254738014791" class="hero-btn hero-btn-secondary"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="mailto:silverrockhotelfo@gmail.com" class="hero-btn hero-btn-secondary"><i class="fas fa-envelope"></i> Email Us</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo"><img src="../images/logo_footer.svg" alt="Mokawa Group"><p>Rooted in Culture, Designed to Deliver</p></div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Our Properties</h4>
+                    <ul>
+                        <li><a href="silver-rock.html">Silver Rock Boutique Resort</a></li>
+                        <li><a href="paradise-farm.html">Paradise Farm Cottages</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Mokawa Group Ltd. All rights reserved. Website managed and developed by Megzier Group Ltd.</p></div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Mokawa Group - Transform Your Hospitality Asset</title>
+    <meta name="developer" content="This website is managed and developed by Megzier Group Ltd">
+    <meta name="designer" content="Megzier Group Ltd">
+    <meta name="description" content="Strategic hotel management, leasing, and transformation services. Turn your underperforming property into a profitable hospitality destination.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/logo_ABOUT.jpg">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/logo-enhancement.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ── Services Hero: Paradise structure, image LEFT, content RIGHT, warm dark ── */
+        .sv-hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:stretch;overflow:hidden;background:#12100d;}
+        .sv-hero-left{position:relative;flex:0 0 52%;overflow:hidden;}
+        .sv-slider{position:absolute;inset:0;}
+        .sv-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease;transform:scale(1.05);}
+        .sv-slide.active{opacity:1;animation:sv-drift 14s ease-in-out infinite alternate;}
+        @keyframes sv-drift{0%{transform:scale(1.05) translateX(0);}100%{transform:scale(1.12) translateX(-2%);}}
+        .sv-img-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(18,16,13,.25) 0%,rgba(18,16,13,.5) 60%,rgba(18,16,13,.75) 100%);}
+        /* Arch faces RIGHT — same as Paradise */
+        .sv-arch{position:absolute;top:0;right:-1px;bottom:0;width:90px;z-index:10;background:#12100d;clip-path:ellipse(90px 55% at 100% 50%);}
+        .sv-arch::before{content:'';position:absolute;inset:8% auto 8% -3px;width:4px;background:linear-gradient(180deg,transparent,#C9A961 20%,#C9A961 80%,transparent);border-radius:3px;}
+        .sv-wave{position:absolute;bottom:0;left:0;right:0;height:100px;z-index:8;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,95 L150,55 L300,85 L450,40 L600,70 L750,35 L900,65 L1050,30 L1200,75 L1200,120 L0,120Z' fill='%2312100d'/%3E%3C/svg%3E") bottom/cover no-repeat;}
+        .sv-indicators{position:absolute;bottom:2.5rem;left:2rem;display:flex;gap:.5rem;z-index:20;}
+        .sv-dot{width:24px;height:4px;border-radius:2px;background:rgba(201,169,97,.35);cursor:pointer;transition:all .4s;}
+        .sv-dot.active{background:#C9A961;width:40px;}
+        /* RIGHT content panel */
+        .sv-hero-right{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 5rem 5rem;background:#12100d;position:relative;z-index:5;}
+        .sv-hero-right::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 80% 20%,rgba(201,169,97,.06) 0%,transparent 70%);pointer-events:none;}
+        .sv-dot-grid{position:absolute;top:5rem;right:2.5rem;display:grid;grid-template-columns:repeat(4,7px);gap:5px;opacity:.18;}
+        .sv-dot-grid span{width:7px;height:7px;border-radius:50%;background:#C9A961;display:block;}
+        .sv-dot-grid span:nth-child(even){background:rgba(201,169,97,.45);}
+        /* Unique to services: vertical "SERVICES" text running down the right edge */
+        .sv-vertical-label{position:absolute;right:1.5rem;top:50%;transform:translateY(-50%) rotate(90deg);font-size:.6rem;font-weight:800;letter-spacing:.4em;text-transform:uppercase;color:rgba(201,169,97,.2);white-space:nowrap;}
+        .sv-overline{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#C9A961;margin-bottom:.9rem;font-weight:700;display:flex;align-items:center;gap:.8rem;animation:sv-fade .9s ease .2s both;}
+        .sv-overline::before{content:'';display:inline-block;width:28px;height:2px;background:#C9A961;border-radius:1px;}
+        .sv-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.9rem);font-weight:900;color:#fff;line-height:1.08;margin-bottom:.5rem;animation:sv-rise 1s cubic-bezier(.22,1,.36,1) .1s both;}
+        .sv-title em{font-style:italic;font-weight:400;color:#C9A961;display:block;font-size:.88em;}
+        .sv-location{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:rgba(255,255,255,.6);background:rgba(201,169,97,.08);border:1px solid rgba(201,169,97,.25);padding:.4rem 1rem;border-radius:50px;margin:1.1rem 0 1.4rem;font-weight:600;letter-spacing:.05em;animation:sv-fade .9s ease .3s both;}
+        .sv-location i{color:#C9A961;font-size:.78rem;}
+        .sv-rule{width:50px;height:3px;background:linear-gradient(90deg,#C9A961,rgba(201,169,97,.3));border-radius:2px;margin-bottom:1.4rem;animation:sv-expand .9s ease .4s both;}
+        @keyframes sv-expand{from{width:0;opacity:0;}to{width:50px;opacity:1;}}
+        .sv-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(.95rem,1.6vw,1.2rem);color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:1.8rem;font-style:italic;animation:sv-fade .9s ease .45s both;}
+        /* Service chips (equivalent of pf-chips) */
+        .sv-chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2.2rem;animation:sv-fade .9s ease .55s both;}
+        .sv-chip{display:flex;align-items:center;gap:.4rem;background:rgba(201,169,97,.07);border:1px solid rgba(201,169,97,.18);color:rgba(255,255,255,.7);padding:.35rem .85rem;border-radius:50px;font-size:.76rem;font-weight:600;letter-spacing:.04em;transition:all .25s;}
+        .sv-chip:hover{background:rgba(201,169,97,.15);border-color:#C9A961;color:#C9A961;}
+        .sv-chip i{color:#C9A961;font-size:.72rem;}
+        .sv-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:sv-rise 1s cubic-bezier(.22,1,.36,1) .7s both;}
+        .sv-btn{padding:.85rem 2rem;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s ease;letter-spacing:.03em;}
+        .sv-btn-gold{background:linear-gradient(135deg,#C9A961,#8B6430);color:#12100d;box-shadow:0 6px 20px rgba(201,169,97,.3);}
+        .sv-btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(201,169,97,.45);}
+        .sv-btn-ghost{background:transparent;border:2px solid rgba(201,169,97,.4);color:#fff;}
+        .sv-btn-ghost:hover{border-color:#C9A961;color:#C9A961;transform:translateY(-3px);}
+        .sv-btn i{transition:transform .3s;}
+        .sv-btn:hover i{transform:translateX(4px);}
+        /* Stats ribbon — bottom right */
+        .sv-stats-ribbon{position:absolute;bottom:0;right:0;display:flex;z-index:20;}
+        .sv-stat-pill{padding:.9rem 1.6rem;background:rgba(18,16,13,.95);backdrop-filter:blur(8px);border-left:1px solid rgba(201,169,97,.2);text-align:center;}
+        .sv-stat-pill:first-child{border-left:none;border-radius:8px 0 0 0;}
+        .sv-sn{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#C9A961;display:block;line-height:1;}
+        .sv-sl{font-size:.63rem;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem;}
+        @keyframes sv-drop{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+        @keyframes sv-rise{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+        @keyframes sv-fade{from{opacity:0;}to{opacity:1;}}
+        @media(max-width:900px){
+            .sv-hero{flex-direction:column;height:auto;min-height:100svh;}
+            .sv-hero-left{flex:0 0 42vh;width:100%;min-height:42vh;max-height:50vh;}
+            .sv-arch{display:none;}
+            .sv-wave{display:none;}
+            .sv-hero-right{padding:2rem 1.5rem 3rem;flex:1;}
+            .sv-title{font-size:clamp(1.8rem,6vw,2.5rem);}
+            .sv-stats-ribbon{position:static;border-radius:0;display:flex;flex-wrap:wrap;}
+            .sv-stat-pill{flex:1;min-width:100px;}
+            .sv-dot-grid{display:none;}
+            .sv-vertical-label{display:none;}
+            .sv-chips{flex-wrap:wrap;gap:.4rem;}
+            .sv-chip{font-size:.72rem;padding:.3rem .7rem;}
+            .sv-ctas{flex-direction:column;gap:.6rem;}
+            .sv-btn{width:100%;justify-content:center;}
+        }
+        @media(max-width:480px){
+            .sv-hero-left{flex:0 0 35vh;min-height:35vh;}
+            .sv-hero-right{padding:1.5rem 1.2rem 2.5rem;}
+            .sv-title{font-size:clamp(1.5rem,5.5vw,2rem);}
+            .sv-tagline{font-size:.9rem !important;}
+            .sv-chips{margin-bottom:1.2rem;}
+        }
+        /* Nav: force row only on desktop; mobile uses JS toggle */
+        @media(min-width:769px){.navbar-menu{display:flex!important;flex-direction:row!important;align-items:center!important;}}
+        @media(max-width:768px){.navbar-menu{display:none!important;}.navbar-menu.active{display:flex!important;}.menu-toggle{display:flex!important;}}
+    
+        .services-detailed {
+            padding: 0;
+        }
+        
+        .service-detail-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+        
+        .service-detail-block.reverse {
+            direction: rtl;
+        }
+        
+        .service-detail-block.reverse > * {
+            direction: ltr;
+        }
+        
+        .service-detail-image {
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-detail-content {
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: white;
+        }
+        
+        .service-detail-content .service-number {
+            font-size: 5rem;
+            font-weight: 700;
+            color: #D4AF37;
+            opacity: 0.15;
+            line-height: 1;
+            margin-bottom: 0;
+        }
+        
+        .service-detail-content h2 {
+            font-size: 2.5rem;
+            color: #2C2416;
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .service-detail-content p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        
+        .service-features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.05rem;
+            color: #555;
+        }
+        
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-features i {
+            color: #D4AF37;
+            font-size: 1.3rem;
+        }
+        
+        .cta-banner {
+            background: linear-gradient(135deg, #2C2416, #8B6F47);
+            padding: 6rem 5%;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-banner h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-banner p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 968px) {
+            .service-detail-block {
+                grid-template-columns: 1fr;
+                direction: ltr !important;
+            }
+            
+            .service-detail-image {
+                min-height: 300px;
+            }
+            
+            .service-detail-content {
+                padding: 3rem 2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Mokawa Group hospitality management services in Kenya: Full hotel management, property leasing with guaranteed income, asset transformation, and revenue optimization. Transform your hospitality asset today.">
+    <meta name="keywords" content="hotel management services Kenya, property leasing Kenya, hospitality consulting, hotel transformation, revenue optimization, property management Kenya, hotel leasing">
+    <meta name="author" content="Mokawa Group Ltd">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.mokawagroup.co.ke/services.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mokawagroup.co.ke/services.html">
+    <meta property="og:title" content="Hotel Management Services - Mokawa Group Kenya">
+    <meta property="og:description" content="Expert hotel management, guaranteed property leasing, and asset transformation services across Kenya.">
+    <meta property="og:image" content="https://www.mokawagroup.co.ke/images/mokawa-services.jpg">
+        <link rel="stylesheet" href="css/mobile-responsive-fix.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L30QNK1ZG8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L30QNK1ZG8');
+</script>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-logo">
+                <a href="index.html">
+                    <img src="images/logo.jpg" alt="Mokawa Group">
+                </a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mokawa-story.html">Mokawa Story</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li class="dropdown">
+                    <a href="index.html#portfolio">Portfolio</a>
+                    <div class="dropdown-menu">
+                        <a href="hotels/silver-rock.html">
+                            <i class="fas fa-umbrella-beach"></i> Silver Rock Boutique Resort
+                        </a>
+                        <a href="hotels/paradise-farm.html">
+                            <i class="fas fa-mountain"></i> Paradise Farm Cottages
+                        </a>
+                        <a href="hotels/eldon-villas.html">
+                            <i class="fas fa-building"></i> Eldon Villas
+                        </a>
+                    </div>
+                </li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Hero -->
+    <section class="sv-hero">
+
+        <!-- LEFT: Sliding service imagery (same structure as pf-hero-left) -->
+        <div class="sv-hero-left">
+            <div class="sv-slider">
+                <div class="sv-slide active" style="background-image:url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80')"></div>
+                <div class="sv-slide" style="background-image:url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80')"></div>
+                <div class="sv-slide" style="background-image:url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80')"></div>
+            </div>
+            <div class="sv-img-overlay"></div>
+            <div class="sv-arch"></div>
+            <div class="sv-wave"></div>
+            <div class="sv-indicators">
+                <div class="sv-dot active" onclick="svGo(0)"></div>
+                <div class="sv-dot" onclick="svGo(1)"></div>
+                <div class="sv-dot" onclick="svGo(2)"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Content panel (same structure as pf-hero-right) -->
+        <div class="sv-hero-right">
+            <div class="sv-dot-grid">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+            </div>
+            <!-- Unique vertical label -->
+            <div class="sv-vertical-label">Our Services · Mokawa Group</div>
+
+            <span class="sv-overline">Mokawa Group — What We Offer</span>
+
+            <h1 class="sv-title">
+                Transform Your
+                <em>Hospitality Asset</em>
+            </h1>
+
+            <div class="sv-location">
+                <i class="fas fa-handshake"></i>&nbsp; Strategic Hotel Management &nbsp;·&nbsp; Kenya
+            </div>
+
+            <div class="sv-rule"></div>
+
+            <p class="sv-tagline">
+                "From full-scale operations to guaranteed lease income — we turn<br>
+                dormant properties into thriving, profitable destinations."
+            </p>
+
+            <div class="sv-chips">
+                <span class="sv-chip"><i class="fas fa-building"></i> Hotel Management</span>
+                <span class="sv-chip"><i class="fas fa-file-contract"></i> Property Leasing</span>
+                <span class="sv-chip"><i class="fas fa-tools"></i> Asset Transformation</span>
+                <span class="sv-chip"><i class="fas fa-chart-line"></i> Revenue Growth</span>
+            </div>
+
+            <div class="sv-ctas">
+                <a href="#services-detail" class="sv-btn sv-btn-gold">
+                    Explore Services <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="index.html#contact" class="sv-btn sv-btn-ghost">
+                    Partner With Us
+                </a>
+            </div>
+        </div>
+
+        <!-- Stats ribbon bottom-right -->
+        <div class="sv-stats-ribbon">
+            <div class="sv-stat-pill">
+                <span class="sv-sn">4</span>
+                <span class="sv-sl">Services</span>
+            </div>
+            <div class="sv-stat-pill">
+                <span class="sv-sn">3</span>
+                <span class="sv-sl">Properties</span>
+            </div>
+            <div class="sv-stat-pill">
+                <span class="sv-sn">5+</span>
+                <span class="sv-sl">Years</span>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Services Detailed -->
+    <section class="services-detailed">
+        
+        <!-- Service 1 -->
+        <div class="service-detail-block">
+            <div class="service-detail-image" style="background-image: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&q=80');"></div>
+            <div class="service-detail-content">
+                <div class="service-number">01</div>
+                <h2>Full-Scale Hotel Management</h2>
+                <p>
+                    Transform your property with end-to-end operational excellence. We handle everything from daily operations to revenue optimization, ensuring your asset reaches its full profit potential while maintaining world-class guest experiences.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-chart-line"></i> Dynamic revenue management & pricing strategies</li>
+                    <li><i class="fas fa-users"></i> Complete staff recruitment, training & development</li>
+                    <li><i class="fas fa-concierge-bell"></i> Front desk, F&B & housekeeping operations</li>
+                    <li><i class="fas fa-tools"></i> Property maintenance & quality control</li>
+                    <li><i class="fas fa-analytics"></i> Monthly performance reporting & analytics</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="service-detail-block reverse">
+            <div class="service-detail-image" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&q=80');"></div>
+            <div class="service-detail-content">
+                <div class="service-number">02</div>
+                <h2>Strategic Property Leasing</h2>
+                <p>
+                    Enjoy guaranteed returns without operational headaches. We lease your entire property, invest in necessary improvements, and manage all operations. You receive fixed monthly income while we maximize the asset's potential.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-money-bill-wave"></i> Guaranteed fixed monthly rental payments</li>
+                    <li><i class="fas fa-handshake"></i> Long-term partnership agreements (5-15 years)</li>
+                    <li><i class="fas fa-hammer"></i> Property upgrades & maintenance included</li>
+                    <li><i class="fas fa-chart-pie"></i> Brand repositioning & market optimization</li>
+                    <li><i class="fas fa-shield-alt"></i> Full insurance & legal compliance coverage</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="service-detail-block">
+            <div class="service-detail-image" style="background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80');"></div>
+            <div class="service-detail-content">
+                <div class="service-number">03</div>
+                <h2>Property Transformation</h2>
+                <p>
+                    Turn dormant or struggling properties into profitable hospitality destinations. From market analysis to renovation and launch, we provide the expertise and capital to completely transform your asset's performance.
+                </p>
+                <ul class="service-features">
+                    <li><i class="fas fa-search-dollar"></i> Comprehensive market feasibility studies</li>
+                    <li><i class="fas fa-lightbulb"></i> Strategic positioning & brand development</li>
+                    <li><i class="fas fa-paint-roller"></i> Renovation guidance & capital investment</li>
+                    <li><i class="fas fa-rocket"></i> Launch strategy & marketing campaigns</li>
+                    <li><i class="fas fa-cog"></i> Post-launch operational management</li>
+                </ul>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner">
+        <h2>Ready to Unlock Your Property's Potential?</h2>
+        <p>
+            Let's discuss how Mokawa Group can transform your hospitality asset into a high-performing, profitable destination. Whether you're looking for management, leasing, or complete transformation—we have the expertise and track record to deliver results.
+        </p>
+        <a href="index.html#contact" class="btn-primary" style="display: inline-block; text-decoration: none; font-size: 1.1rem; padding: 1.2rem 3rem;">
+            Schedule a Consultation <i class="fas fa-arrow-right"></i>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <img src="images/logo_footer.svg" alt="Mokawa Group" style="height: 60px; margin-bottom: 1rem; filter: brightness(0) invert(1);">
+                <p style="color: rgba(255,255,255,0.8);">Rooted in Culture, Designed to Deliver</p>
+                <div class="social-links" style="margin-top: 1rem;">
+                    <a href="https://web.facebook.com/p/Mokawa-Group-61579083631536/" target="_blank" style="color: white; font-size: 1.5rem; margin-right: 1rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="https://ke.linkedin.com/company/mokawa-hospitality-management" target="_blank" style="color: white; font-size: 1.5rem; margin-right: 1rem;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4 style="color: white; margin-bottom: 1rem;">Quick Links</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.5rem;"><a href="index.html" style="color: rgba(255,255,255,0.8);">Home</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="mokawa-story.html" style="color: rgba(255,255,255,0.8);">Mokawa Story</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="index.html#about" style="color: rgba(255,255,255,0.8);">About</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="services.html" style="color: rgba(255,255,255,0.8);">Services</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="index.html#contact" style="color: rgba(255,255,255,0.8);">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4 style="color: white; margin-bottom: 1rem;">Contact Us</h4>
+                <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.8);">
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-phone"></i> <a href="https://wa.me/254738014791" style="color: rgba(255,255,255,0.8);">+254 738 014 791</a></li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-envelope"></i> martin@mokawagroup.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom" style="text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);">
+            <p>&copy; 2026 Mokawa Group Ltd. All rights reserved. Website managed and developed by Megzier Group Ltd.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Guarantee Badge -->
+    <div class="floating-badge">
+        <img src="images/shape-1_offer.png" alt="100% Satisfaction Guarantee">
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Click handler for floating badge to scroll to contact
+        document.querySelector('.floating-badge')?.addEventListener('click', function() {
+            window.location.href = 'index.html#contact';
+        });
+    </script>
+
+    <script>
+    (function(){
+        var slides = document.querySelectorAll('.sv-slide');
+        var dots   = document.querySelectorAll('.sv-dot');
+        var cur = 0;
+        function go(n){
+            slides[cur].classList.remove('active');
+            dots[cur].classList.remove('active');
+            cur = (n + slides.length) % slides.length;
+            slides[cur].classList.add('active');
+            dots[cur].classList.add('active');
+        }
+        window.svGo = go;
+        setInterval(function(){ go(cur+1); }, 5500);
+    })();
+    </script>
+</body>
+</html>

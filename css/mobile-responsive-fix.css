@@ -1,0 +1,1291 @@
+/* ============================================================
+   MOKAWA GROUP — COMPREHENSIVE MOBILE RESPONSIVENESS FIX
+   Targets: all screen sizes, especially small phones (≤390px)
+   Key principle: text-over-image elements scale proportionally
+   ============================================================ */
+
+/* ── 1. GLOBAL BASE FIXES ── */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    min-width: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ── 2. VIEWPORT SCALING — prevents horizontal overflow ── */
+@media (max-width: 480px) {
+    html { font-size: 14px; }
+}
+@media (max-width: 360px) {
+    html { font-size: 13px; }
+}
+
+/* ── CRITICAL: Ensure mobile menu is hidden by default and toggle works ── */
+/* This must override any inline !important styles in hotel pages */
+@media (max-width: 768px) {
+    ul.navbar-menu:not(.active) {
+        display: none !important;
+    }
+    ul.navbar-menu.active {
+        display: flex !important;
+        flex-direction: column !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background: rgba(44, 36, 22, 0.98) !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.5rem !important;
+        z-index: 9999 !important;
+        padding: 2rem !important;
+        overflow-y: auto !important;
+        flex-direction: column !important;
+    }
+    .menu-toggle {
+        display: flex !important;
+    }
+}
+
+
+/* ============================================================
+   3. NAVIGATION — small phone friendly
+   ============================================================ */
+@media (max-width: 768px) {
+    .nav-container,
+    .navbar > .nav-container {
+        padding: 0 1rem;
+    }
+
+    .navbar-logo img {
+        height: 50px !important;
+    }
+
+    .navbar.scrolled .navbar-logo img {
+        height: 44px !important;
+    }
+
+    .menu-toggle {
+        display: flex !important;
+    }
+
+    /* Mobile nav menu */
+    .navbar-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(44, 36, 22, 0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        z-index: 999;
+        padding: 2rem;
+        overflow-y: auto;
+    }
+
+    .navbar-menu.active {
+        display: flex !important;
+    }
+
+    .navbar-menu a,
+    .navbar-menu .nav-link {
+        font-size: 1.1rem !important;
+        padding: 0.8rem 1.5rem !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdown-menu {
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        background: rgba(0,0,0,0.3) !important;
+        margin: 0.5rem 0;
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    .dropdown-menu a {
+        font-size: 0.9rem !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    /* Hide the navbar "Book" button on mobile (NOT room booking buttons) */
+    .navbar .btn-book,
+    .navbar a.btn-book {
+        display: none !important;
+    }
+}
+
+/* ── NAV CONTAINER: hotel pages use class="container" inside navbar ──
+   Make it flex so logo + menu are always in ONE ROW on desktop */
+.navbar .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    width: 100%;
+    padding: 0 1.5rem !important;
+}
+
+/* ── Room booking buttons: ALWAYS visible on all screen sizes ── */
+.room-book {
+    display: flex !important;
+}
+.room-book .btn-book,
+.room-book a.btn-book {
+    display: flex !important;
+    flex: 1;
+}
+@media (max-width: 480px) {
+    .room-book {
+        flex-direction: column !important;
+        gap: 0.6rem !important;
+    }
+    .room-book .btn-book {
+        width: 100% !important;
+        padding: 0.8rem 1rem !important;
+        font-size: 0.88rem !important;
+    }
+}
+
+/* ── X CLOSE BUTTON for mobile menu ── */
+.nav-close-btn {
+    display: none;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.4);
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    transition: all 0.2s;
+}
+.nav-close-btn:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: #C9A961;
+    color: #C9A961;
+}
+@media (max-width: 768px) {
+    ul.navbar-menu.active .nav-close-btn,
+    .navbar-menu.active .nav-close-btn {
+        display: flex;
+    }
+}
+
+@media (max-width: 390px) {
+    .navbar-logo img {
+        height: 42px !important;
+    }
+}
+
+
+/* ============================================================
+   4. INDEX HERO (mk-hero) — split layout → stacked on mobile
+   Text and image scale together proportionally
+   ============================================================ */
+@media (max-width: 900px) {
+    .mk-hero {
+        flex-direction: column;
+        height: auto;
+        min-height: 100svh;
+    }
+
+    .mk-hero-left {
+        flex: 0 0 50vw;
+        width: 100%;
+        min-height: 45vh;
+        max-height: 55vh;
+        position: relative;
+    }
+
+    .mk-arch,
+    .mk-wave {
+        display: none;
+    }
+
+    /* Text label over the left image — keep centred, scale with container */
+    .mk-hotel-label {
+        /* stays absolute centred in mk-hero-left — inherits its dimensions */
+        width: 90%;
+        max-width: 320px;
+    }
+
+    .mk-hotel-name {
+        font-size: clamp(1.4rem, 5.5vw, 2.8rem) !important;
+    }
+
+    .mk-hotel-loc {
+        font-size: clamp(0.6rem, 2.2vw, 0.85rem) !important;
+    }
+
+    .mk-hero-right {
+        flex: 1;
+        padding: 2.5rem 1.5rem 3rem;
+        width: 100%;
+    }
+
+    .mk-title {
+        font-size: clamp(1.6rem, 6vw, 2.8rem) !important;
+        margin-bottom: 0.75rem;
+    }
+
+    .mk-tagline {
+        font-size: clamp(0.85rem, 3vw, 1.1rem) !important;
+        line-height: 1.65;
+    }
+
+    .mk-chips {
+        gap: 0.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .mk-chip {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.75rem;
+    }
+
+    .mk-cta {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .mk-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    .mk-dot-grid {
+        display: none;
+    }
+
+    .mk-indicators {
+        bottom: 1rem;
+        left: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mk-hero-left {
+        min-height: 38vh;
+        max-height: 46vh;
+    }
+
+    .mk-hotel-name {
+        font-size: clamp(1.2rem, 5vw, 2rem) !important;
+    }
+
+    .mk-hotel-loc {
+        font-size: 0.62rem !important;
+        letter-spacing: 0.15em !important;
+    }
+
+    .mk-overline {
+        font-size: 0.6rem;
+    }
+
+    .mk-title {
+        font-size: clamp(1.4rem, 5.5vw, 2rem) !important;
+        line-height: 1.15;
+    }
+}
+
+
+/* ============================================================
+   5. IDX HERO (cinematic full-screen) — used on some pages
+   ============================================================ */
+@media (max-width: 768px) {
+    .idx-hero {
+        min-height: 100svh;
+    }
+
+    .idx-headline {
+        font-size: clamp(2.4rem, 10vw, 4.5rem) !important;
+        line-height: 1 !important;
+    }
+
+    .idx-sub {
+        font-size: 0.9rem !important;
+        padding: 0 1rem;
+    }
+
+    .idx-ctas {
+        flex-direction: column;
+        padding: 0 1.5rem;
+        gap: 0.75rem;
+    }
+
+    .idx-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.85rem 1.5rem;
+    }
+
+    .idx-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 1.5rem;
+    }
+
+    .idx-prop-strip {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .idx-prop {
+        min-width: 150px;
+        padding: 0.6rem 0.9rem;
+    }
+
+    .idx-prop-name {
+        font-size: 0.82rem;
+    }
+
+    .idx-slide-ctrl {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .idx-scroll-cue {
+        display: none;
+    }
+}
+
+@media (max-width: 390px) {
+    .idx-headline {
+        font-size: clamp(2rem, 9vw, 3rem) !important;
+    }
+
+    .idx-eyebrow span {
+        font-size: 0.5rem !important;
+        letter-spacing: 0.12em !important;
+    }
+}
+
+
+/* ============================================================
+   6. HOTEL HERO (hotel detail pages) — text centred over image
+   Text and image must scale at the same ratio
+   ============================================================ */
+@media (max-width: 768px) {
+    .hotel-hero {
+        height: 55vh !important;
+        min-height: 320px !important;
+        margin-top: 60px;
+    }
+
+    /* The hero content is absolute-centred inside hotel-hero.
+       We scale all text using clamp so it shrinks with the viewport
+       and stays in the same visual position relative to the image. */
+    .hotel-hero .hero-content {
+        padding: 0 1.2rem;
+        width: 100%;
+    }
+
+    .hotel-name {
+        font-size: clamp(1.6rem, 7vw, 2.5rem) !important;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+
+    .hotel-location {
+        font-size: clamp(0.8rem, 3vw, 1.1rem) !important;
+        margin-bottom: 0.5rem;
+    }
+
+    .hotel-tagline {
+        font-size: clamp(0.7rem, 2.5vw, 1rem) !important;
+        letter-spacing: 1px;
+    }
+
+    .hotel-hero .hero-image {
+        background-attachment: scroll !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hotel-hero {
+        height: 48vh !important;
+        min-height: 280px !important;
+        margin-top: 55px;
+    }
+
+    .hotel-name {
+        font-size: clamp(1.3rem, 6.5vw, 2rem) !important;
+        margin-bottom: 0.35rem;
+    }
+
+    .hotel-location {
+        font-size: clamp(0.72rem, 2.8vw, 0.95rem) !important;
+    }
+
+    .hotel-tagline {
+        font-size: clamp(0.65rem, 2.2vw, 0.85rem) !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .hotel-hero {
+        height: 44vh !important;
+        min-height: 250px !important;
+    }
+
+    .hotel-name {
+        font-size: 1.2rem !important;
+    }
+}
+
+
+/* ============================================================
+   7. WP-CARDS (Why Partner / What Sets Us Apart image cards)
+   Text over images — must scale proportionally
+   ============================================================ */
+@media (max-width: 768px) {
+    .wp-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.2rem;
+    }
+
+    .wp-card {
+        aspect-ratio: 4 / 3;
+    }
+
+    /* On mobile: always show description/list (no hover required) */
+    .wp-card-desc,
+    .wp-list,
+    .wp-btn {
+        max-height: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .wp-card-title {
+        font-size: clamp(1.1rem, 4.5vw, 1.5rem) !important;
+    }
+
+    .wp-card-desc {
+        font-size: 0.82rem !important;
+    }
+
+    .wp-list li {
+        font-size: 0.78rem !important;
+    }
+
+    .wp-num {
+        font-size: 3.5rem !important;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .wp-overlay {
+        padding: 1.5rem !important;
+        /* Ensure overlay is tall enough to show all content */
+        background: linear-gradient(
+            to top,
+            rgba(5,3,2,0.98) 0%,
+            rgba(5,3,2,0.90) 50%,
+            rgba(5,3,2,0.4) 80%,
+            transparent 100%
+        ) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .wp-card {
+        aspect-ratio: 3 / 2;
+    }
+
+    .wp-card-title {
+        font-size: clamp(1rem, 4vw, 1.3rem) !important;
+        margin-bottom: 0.5rem;
+    }
+
+    .wp-card-desc {
+        font-size: 0.76rem !important;
+        line-height: 1.55;
+        margin-bottom: 0.75rem;
+    }
+
+    .wp-list {
+        margin-bottom: 0.75rem;
+    }
+
+    .wp-list li {
+        font-size: 0.72rem !important;
+        margin-bottom: 0.3rem;
+    }
+
+    .wp-btn {
+        padding: 0.5rem 1.1rem !important;
+        font-size: 0.78rem !important;
+    }
+}
+
+
+/* ============================================================
+   8. ABOUT SECTION
+   ============================================================ */
+@media (max-width: 1024px) {
+    .about-container {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 4rem 0 !important;
+    }
+
+    .about-container {
+        padding: 0 5% !important;
+    }
+
+    .about-images {
+        height: auto !important;
+        min-height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        overflow: visible !important;
+        order: -1; /* image above text on mobile */
+    }
+
+    .about-img-main {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        height: 260px !important;
+    }
+
+    .about-img-overlay {
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
+        width: 90% !important;
+        height: 200px !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 auto !important;
+    }
+
+    .stats-row {
+        gap: 1.5rem !important;
+        flex-wrap: wrap !important;
+        justify-content: center;
+    }
+
+    .stat-item {
+        min-width: 80px;
+    }
+
+    .stat-number {
+        font-size: 2.5rem !important;
+    }
+
+    .mv-item {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .mv-icon {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-img-main {
+        height: 220px !important;
+    }
+
+    .about-img-overlay {
+        height: 170px !important;
+    }
+
+    .stat-number {
+        font-size: 2rem !important;
+    }
+
+    .stat-label {
+        font-size: 0.75rem !important;
+    }
+}
+
+
+/* ============================================================
+   9. PROPERTIES / PORTFOLIO SECTION
+   ============================================================ */
+@media (max-width: 1024px) {
+    .property-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+        padding: 0 5% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .property-tabs {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0 5%;
+        margin-bottom: 3rem;
+    }
+
+    .tab-btn {
+        font-size: 1.1rem;
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid rgba(201,169,97,0.2);
+    }
+
+    .main-image {
+        height: 280px !important;
+    }
+
+    /* Circular overlay — keep it visible but smaller */
+    .circular-overlay {
+        width: 120px !important;
+        height: 120px !important;
+        right: 10px !important;
+        bottom: -30px !important;
+        border-width: 4px !important;
+    }
+
+    .property-title {
+        font-size: clamp(1.5rem, 5.5vw, 2.2rem) !important;
+    }
+
+    .property-tagline {
+        font-size: 0.85rem !important;
+    }
+
+    .property-description {
+        font-size: 0.88rem !important;
+        line-height: 1.65 !important;
+    }
+
+    .property-features {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+
+    .property-buttons {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+
+    .property-buttons a {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-image {
+        height: 230px !important;
+    }
+
+    .circular-overlay {
+        width: 95px !important;
+        height: 95px !important;
+        right: 8px !important;
+        bottom: -20px !important;
+        border-width: 3px !important;
+    }
+
+    .property-logo img {
+        max-height: 55px !important;
+    }
+
+    .property-title {
+        font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+    }
+}
+
+
+/* ============================================================
+   10. SERVICES / ZIGZAG SECTION
+   ============================================================ */
+@media (max-width: 768px) {
+    .services-section {
+        padding: 3.5rem 0 !important;
+    }
+
+    .services-header {
+        padding: 0 5%;
+        margin-bottom: 2.5rem !important;
+    }
+
+    .services-zigzag::before {
+        display: none;
+    }
+
+    .zigzag-left,
+    .zigzag-right {
+        flex-direction: column !important;
+        padding: 1.5rem !important;
+        text-align: center !important;
+        background: rgba(255,255,255,0.95) !important;
+        border-radius: 12px !important;
+        margin-bottom: 1.2rem !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+
+    .zigzag-number {
+        font-size: 2.5rem !important;
+        line-height: 1;
+    }
+
+    .zigzag-icon {
+        width: 65px !important;
+        height: 65px !important;
+        font-size: 1.6rem !important;
+    }
+
+    .zigzag-content h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+
+    .zigzag-content p {
+        font-size: 0.85rem !important;
+        line-height: 1.6 !important;
+        margin: 0 !important;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.2rem !important;
+    }
+
+    .value-bubble {
+        padding: 1.5rem 1rem !important;
+    }
+
+    .value-bubble h4 {
+        font-size: 1.1rem !important;
+    }
+
+    .value-bubble p {
+        font-size: 0.8rem !important;
+    }
+
+    .values-flow {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .value-connector {
+        transform: rotate(90deg);
+        display: block;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .values-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .zigzag-left,
+    .zigzag-right {
+        padding: 1.2rem 1rem !important;
+    }
+}
+
+
+/* ============================================================
+   11. TEAM SECTION
+   ============================================================ */
+@media (max-width: 968px) {
+    .team-split-item,
+    .team-split-reverse {
+        grid-template-columns: 1fr !important;
+        min-height: auto;
+    }
+
+    .team-split-reverse .team-split-bg { order: 1; }
+    .team-split-reverse .team-split-content { order: 2; }
+
+    .team-split-bg {
+        min-height: 280px !important;
+    }
+
+    .team-split-content {
+        padding: 2.5rem 1.5rem !important;
+    }
+
+    .team-split-content h3 {
+        font-size: 1.8rem !important;
+    }
+
+    .team-avatar {
+        width: 140px !important;
+        height: 140px !important;
+        font-size: 4rem !important;
+    }
+
+    .team-connect {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .team-btn {
+        font-size: 0.85rem;
+        padding: 0.75rem 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-split-bg {
+        min-height: 220px !important;
+    }
+
+    .team-split-content h3 {
+        font-size: 1.4rem !important;
+    }
+
+    .team-split-content p {
+        font-size: 0.85rem !important;
+    }
+
+    .team-avatar {
+        width: 110px !important;
+        height: 110px !important;
+        font-size: 3.2rem !important;
+    }
+
+    .team-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .team-connect {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .team-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+/* ============================================================
+   12. HOTEL OVERVIEW / STAT CARDS
+   ============================================================ */
+@media (max-width: 1024px) {
+    .overview-container {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .overview-stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+
+    .stat-card {
+        padding: 1.5rem 1rem !important;
+    }
+
+    .stat-card h3 {
+        font-size: 2rem !important;
+    }
+
+    .stat-card p {
+        font-size: 0.8rem !important;
+    }
+
+    .stat-card i {
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .overview-stats {
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .overview-stats {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* ============================================================
+   13. AMENITIES GRID (hotel pages)
+   ============================================================ */
+@media (max-width: 768px) {
+    .amenities-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+
+    .amenity-card {
+        padding: 1.2rem 0.9rem !important;
+    }
+
+    .amenity-card i {
+        font-size: 1.8rem !important;
+    }
+
+    .amenity-card h3 {
+        font-size: 0.95rem !important;
+    }
+
+    .amenity-card p {
+        font-size: 0.78rem !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .amenities-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* ============================================================
+   14. GALLERY — horizontal scroll on mobile
+   ============================================================ */
+@media (max-width: 768px) {
+    .gallery-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        gap: 1rem !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.75rem;
+        /* prevent grid from kicking in */
+        grid-template-columns: none !important;
+    }
+
+    .gallery-item {
+        flex: 0 0 75vw !important;
+        max-width: 320px;
+        scroll-snap-align: start;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .gallery-item img {
+        height: 200px !important;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        flex: 0 0 82vw !important;
+    }
+
+    .gallery-item img {
+        height: 175px !important;
+    }
+}
+
+
+/* ============================================================
+   15. CONTACT SECTION
+   ============================================================ */
+@media (max-width: 1024px) {
+    .contact-container {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        background-attachment: scroll !important;
+    }
+
+    .contact-form-wrapper {
+        padding: 2rem 1.2rem !important;
+    }
+
+    .contact-text {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form-wrapper {
+        padding: 1.5rem 1rem !important;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 16px !important; /* prevent iOS auto-zoom */
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+
+/* ============================================================
+   16. FOOTER
+   ============================================================ */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 3rem 5% 2rem !important;
+        background-attachment: scroll !important;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2rem !important;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .footer-legal {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-links {
+        grid-template-columns: 1fr !important;
+    }
+
+    .footer-logo img {
+        height: 50px !important;
+    }
+}
+
+
+/* ============================================================
+   17. GENERAL SECTION PADDING — reduce on small screens
+   ============================================================ */
+@media (max-width: 768px) {
+    .about-section,
+    .services-section,
+    .team-section,
+    .contact-section,
+    .properties-section,
+    .hotel-overview,
+    .room-types-section,
+    .testimonials-section,
+    .why-partner-section {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+    }
+
+    .section-title {
+        font-size: clamp(1.5rem, 5.5vw, 2.2rem) !important;
+        line-height: 1.25 !important;
+    }
+
+    .section-subtitle {
+        font-size: clamp(0.85rem, 3vw, 1rem) !important;
+        line-height: 1.6 !important;
+    }
+
+    .section-header,
+    .services-header,
+    .portfolio-header {
+        margin-bottom: 2.5rem !important;
+        padding: 0 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section,
+    .services-section,
+    .team-section,
+    .contact-section,
+    .properties-section,
+    .hotel-overview,
+    .room-types-section,
+    .testimonials-section,
+    .why-partner-section {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
+
+    .section-title {
+        font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+    }
+}
+
+
+/* ============================================================
+   18. TESTIMONIALS
+   ============================================================ */
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .testimonial-card {
+        padding: 1.5rem 1.2rem !important;
+    }
+
+    .testimonial-text {
+        font-size: 0.88rem !important;
+    }
+}
+
+
+/* ============================================================
+   19. CTA SECTION (hotel pages bottom)
+   ============================================================ */
+@media (max-width: 768px) {
+    .cta-section {
+        padding: 4rem 5% !important;
+    }
+
+    .cta-content h2 {
+        font-size: clamp(1.5rem, 5.5vw, 2rem) !important;
+    }
+
+    .cta-buttons {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        width: 100%;
+    }
+
+    .cta-buttons .btn-primary,
+    .cta-buttons .btn-secondary {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+}
+
+
+/* ============================================================
+   20. BACKGROUND-ATTACHMENT: fixed — broken on iOS
+   ============================================================ */
+@media (max-width: 1024px) {
+    .contact-section,
+    .footer,
+    .stats-section,
+    .values-organic {
+        background-attachment: scroll !important;
+    }
+}
+
+
+/* ============================================================
+   21. TOUCH — increase tap target sizes
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-tertiary,
+    .mk-btn,
+    .idx-btn,
+    .wp-btn,
+    .team-btn {
+        min-height: 48px;
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+    }
+
+    .tab-btn {
+        min-height: 48px;
+    }
+
+    .mk-dot,
+    .idx-dot {
+        width: 28px !important;
+        height: 10px !important;
+        border-radius: 5px;
+    }
+}
+
+
+/* ============================================================
+   22. PREVENT CONTENT OVERFLOW on tiny screens
+   ============================================================ */
+@media (max-width: 390px) {
+    .mk-chips {
+        gap: 0.3rem !important;
+    }
+
+    .mk-chip {
+        font-size: 0.65rem !important;
+        padding: 0.25rem 0.6rem !important;
+    }
+
+    .mk-location {
+        font-size: 0.72rem !important;
+        padding: 0.3rem 0.7rem !important;
+    }
+
+    .property-logo img {
+        max-height: 45px !important;
+    }
+
+    .awards-badge {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .awards-badge i {
+        font-size: 2rem;
+    }
+}

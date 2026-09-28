@@ -1,0 +1,12 @@
+KIIKALLOH LOGO UPDATE REQUIRED:
+
+Current logo: ../images/kiikalloh-logo.jpg
+Required logo: ../images/kiikalloh_logo_nobackground.png
+
+STEPS TO UPDATE:
+1. Upload kiikalloh_logo_nobackground.png to /images/ folder
+2. Update line 508 in hotels/kiikalloh-resort.html:
+   FROM: <img src="../images/kiikalloh-logo.jpg"
+   TO:   <img src="../images/kiikalloh_logo_nobackground.png"
+
+The logo appears in the hero section (circular golden-bordered logo at top of page).

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Rock Boutique Resort | Mokawa Group - Malindi Beachfront Hotel</title>
+    <meta name="developer" content="This website is managed and developed by Megzier Group Ltd">
+    <meta name="designer" content="Megzier Group Ltd">
+    <meta name="description" content="Silver Rock Boutique Resort Malindi - Award-winning beachfront hotel. Best-in-Class Heritage Hospitality 2024.">
+    <link rel="icon" type="image/jpeg" href="../images/logo_ABOUT.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/lightbox.css">
+    <link rel="stylesheet" href="../css/gallery-scroll.css">
+    <style>
+        :root { --gold:#C9A961; --gold-dark:#8B6F47; --blue:#0077BE; --dark:#2C1810; --light:#6B5446; }
+        *{box-sizing:border-box;margin:0;padding:0;}
+        body{font-family:'Montserrat',sans-serif;background:#fff;}
+        /* NAV — only force flex on desktop; mobile uses JS toggle */
+        @media(min-width:769px){
+            .navbar .container{display:flex!important;justify-content:space-between!important;align-items:center!important;flex-wrap:nowrap!important;}
+            .navbar-logo{flex-shrink:0!important;}
+            .navbar-menu{display:flex!important;flex-direction:row!important;align-items:center!important;}
+        }
+        @media(max-width:768px){
+            .navbar-menu{display:none!important;}
+            .navbar-menu.active{display:flex!important;}
+            .menu-toggle{display:flex!important;}
+        }
+        .navbar{z-index:10000!important;}
+
+        /* HERO - Desktop: text left, image fills right side via background */
+        .silver-hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:#f5ede3;}
+        .silver-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+        .silver-hero-content{position:relative;z-index:2;width:100%;padding:120px 5% 4rem;display:flex;align-items:center;}
+        .silver-hero-left{max-width:560px;}
+        .silver-hero-title{font-size:clamp(2.2rem,5vw,4rem);font-weight:900;color:var(--dark);line-height:1.1;margin-bottom:1.2rem;letter-spacing:1px;}
+        .silver-hero-desc{font-size:1.05rem;color:var(--light);line-height:1.75;margin-bottom:1.5rem;max-width:480px;}
+        .silver-hero-meta{margin-bottom:2rem;}
+        .silver-meta-item{display:flex;align-items:center;gap:.6rem;font-size:.95rem;color:var(--dark);margin-bottom:.5rem;font-weight:500;}
+        .silver-meta-item i{color:var(--gold);width:16px;}
+        .silver-hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;}
+        .hero-btn{padding:.85rem 2rem;border-radius:50px;font-size:.95rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;}
+        .btn-whatsapp{background:#25D366;color:white;}
+        .btn-whatsapp:hover{background:#20BD5A;transform:translateY(-3px);box-shadow:0 10px 25px rgba(37,211,102,.4);}
+        .btn-outline{background:transparent;border:2px solid var(--dark);color:var(--dark);}
+        .btn-outline:hover{background:var(--dark);color:white;transform:translateY(-3px);}
+        /* MOBILE HERO — text readable over image */
+        @media(max-width:768px){
+            .silver-hero{min-height:100svh;align-items:flex-end;}
+            .silver-hero-img{object-position:center top;}
+            /* Dark gradient from bottom so text is always readable */
+            .silver-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(245,237,227,0.97) 0%,rgba(245,237,227,0.85) 35%,rgba(245,237,227,0.3) 60%,transparent 100%);z-index:1;}
+            .silver-hero-content{padding:0 5% 3rem;align-items:flex-end;z-index:2;}
+            .silver-hero-left{max-width:100%;}
+            .silver-hero-title{font-size:clamp(1.8rem,6.5vw,2.4rem);letter-spacing:.5px;}
+            .silver-hero-desc{font-size:.9rem;line-height:1.65;max-width:100%;}
+            .silver-meta-item{font-size:.85rem;}
+            .silver-hero-buttons{flex-direction:column;gap:.6rem;}
+            .hero-btn{width:100%;justify-content:center;padding:.75rem 1.5rem;font-size:.9rem;}
+        }
+        @media(max-width:480px){
+            .silver-hero-title{font-size:clamp(1.5rem,6vw,2rem);}
+            .silver-hero-desc{font-size:.82rem;}
+        }
+
+        /* STATS */
+        .stats-section{background:linear-gradient(135deg,#1a1410,#2C2416);padding:4rem 5%;position:relative;}
+        .stats-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+        .stats-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;}
+        .stat-card{text-align:center;padding:2.5rem 1.5rem;background:rgba(201,169,97,.08);border:1px solid rgba(201,169,97,.2);border-radius:15px;transition:all .4s;}
+        .stat-card:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 20px 50px rgba(201,169,97,.2);}
+        .stat-icon{width:70px;height:70px;margin:0 auto 1rem;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:white;}
+        .stat-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:700;color:var(--gold);line-height:1;}
+        .stat-lbl{font-size:.95rem;color:#ccc;text-transform:uppercase;letter-spacing:2px;margin-top:.4rem;}
+        .award-bar{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:white;padding:1.2rem 2rem;border-radius:12px;text-align:center;max-width:550px;margin:2.5rem auto 0;box-shadow:0 10px 30px rgba(201,169,97,.3);}
+        .award-bar i{font-size:2rem;margin-bottom:.5rem;}
+        .award-bar h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;}
+
+        /* SECTION SHARED */
+        .section-header{text-align:center;margin-bottom:3rem;}
+        .section-tag{font-size:1rem;color:var(--gold);text-transform:uppercase;letter-spacing:3px;}
+        .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.5rem);color:var(--dark);font-weight:300;letter-spacing:2px;margin:.5rem 0;}
+        .section-title.white{color:white;}
+        .divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1rem auto;}
+
+        /* ABOUT */
+        .about-section{padding:6rem 5%;background:white;}
+        .about-inner{max-width:900px;margin:0 auto;text-align:center;}
+        .about-text{font-size:1.1rem;line-height:1.9;color:var(--light);margin-bottom:1.2rem;}
+
+        /* ACCOMMODATIONS */
+        .rooms-section{padding:6rem 5%;background:linear-gradient(135deg,#f8f6f3,#fff);}
+        .rooms-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;}
+        .room-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08);transition:all .4s;}
+        .room-card:hover{transform:translateY(-12px);box-shadow:0 25px 60px rgba(0,0,0,.15);}
+        .room-img{position:relative;height:280px;overflow:hidden;}
+        .room-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+        .room-card:hover .room-img img{transform:scale(1.1);}
+        .room-badge{position:absolute;top:1rem;right:1rem;background:var(--gold);color:white;padding:.3rem .9rem;border-radius:20px;font-size:.8rem;font-weight:600;}
+        .room-body{padding:2rem;}
+        .room-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--dark);margin-bottom:.5rem;}
+        .room-desc{font-size:.95rem;color:var(--light);line-height:1.7;margin-bottom:1.2rem;}
+        .room-specs{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1.5rem;}
+        .room-spec{display:flex;align-items:center;gap:.4rem;font-size:.85rem;color:var(--light);background:#f8f6f3;padding:.35rem .8rem;border-radius:20px;}
+        .room-spec i{color:var(--gold);font-size:.9rem;}
+        .room-book{display:flex;gap:.8rem;}
+        .btn-book{flex:1;padding:.8rem 1rem;border:none;border-radius:50px;font-weight:600;font-size:.9rem;cursor:pointer;text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;gap:.4rem;transition:all .3s;}
+        .btn-book-primary{background:#25D366;color:white;}
+        .btn-book-primary:hover{background:#20BD5A;transform:translateY(-2px);}
+        .btn-book-secondary{background:transparent;border:2px solid var(--gold);color:var(--dark);}
+        .btn-book-secondary:hover{background:var(--gold);color:white;}
+
+        /* FACILITIES WITH IMAGES */
+        .facilities-section{padding:6rem 5%;background:#1a1410;}
+        .facilities-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2.5rem;}
+        .facility-card{position:relative;border-radius:20px;overflow:hidden;height:400px;cursor:pointer;transition:all .4s;}
+        .facility-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+        .facility-card:hover img{transform:scale(1.08);}
+        .facility-info{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 2rem 2rem;background:linear-gradient(transparent,rgba(0,0,0,.85));}
+        .facility-icon{width:55px;height:55px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:white;margin-bottom:1rem;}
+        .facility-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:white;margin-bottom:.5rem;}
+        .facility-desc{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.6;}
+        .facility-tag{display:inline-block;background:var(--gold);color:white;padding:.3rem .8rem;border-radius:20px;font-size:.75rem;font-weight:600;margin-top:.8rem;}
+
+        /* GALLERY */
+        .gallery-section{padding:6rem 5%;background:#0d0a08;}
+        .gallery-grid{max-width:1600px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:1.5rem;}
+        .gal-item{position:relative;height:300px;border-radius:12px;overflow:hidden;cursor:pointer;display:block;}
+        .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+        .gal-item:hover img{transform:scale(1.08);}
+        .gal-overlay{position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.7));opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:1.5rem;}
+        .gal-item:hover .gal-overlay{opacity:1;}
+        .gal-overlay span{color:white;font-size:1.1rem;font-weight:600;}
+
+        /* CTA */
+        .cta-section{padding:6rem 5%;background:linear-gradient(135deg,var(--blue),#0099DD);text-align:center;color:white;}
+        .cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;letter-spacing:2px;margin-bottom:1rem;}
+        .cta-text{font-size:1.2rem;max-width:700px;margin:0 auto 2.5rem;}
+        .cta-buttons{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+
+        /* FOOTER */
+        .page-footer{background:#1a1410;padding:3rem 5%;text-align:center;}
+        .page-footer img{height:60px;margin-bottom:1rem;}
+        .page-footer p{color:#aaa;font-size:.9rem;}
+        .footer-links-row{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin:1.5rem 0;}
+        .footer-links-row a{color:var(--gold);text-decoration:none;font-size:.9rem;transition:color .3s;}
+        .footer-links-row a:hover{color:white;}
+        .footer-bottom{border-top:1px solid rgba(201,169,97,.2);padding-top:1.5rem;margin-top:1.5rem;color:#888;font-size:.85rem;}
+
+        /* Animations */
+        .animate-on-scroll{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1);}
+        .animate-on-scroll.animated{opacity:1;transform:translateY(0);}
+        .anim-left{opacity:0;transform:translateX(-30px);transition:all .8s cubic-bezier(.4,0,.2,1);}
+        .anim-right{opacity:0;transform:translateX(30px);transition:all .8s cubic-bezier(.4,0,.2,1);}
+        .anim-left.animated,.anim-right.animated{opacity:1;transform:translateX(0);}
+        .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}.d5{transition-delay:.5s;}.d6{transition-delay:.6s;}
+
+        @media(max-width:768px){
+            .rooms-grid,.facilities-grid,.stats-grid,.gallery-grid{grid-template-columns:1fr;}
+            .silver-hero-buttons,.cta-buttons{flex-direction:column;align-items:center;}
+        }
+    </style>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Silver Rock Boutique Resort - Luxurious beachfront hotel in Malindi, Kenya. Modern rooms, infinity pool, ocean views, fine dining. Book online or call 0769 261 077. Perfect for beach holidays and romantic getaways.">
+    <meta name="keywords" content="Silver Rock Malindi, Malindi hotels, Kenya beach resorts, boutique hotels Malindi, beachfront accommodation Kenya, luxury hotels Malindi, Malindi beach holidays">
+    <meta name="author" content="Mokawa Group Ltd">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.mokawagroup.co.ke/hotels/silver-rock.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mokawagroup.co.ke/hotels/silver-rock.html">
+    <meta property="og:title" content="Silver Rock Boutique Resort - Luxury Beachfront Hotel in Malindi">
+    <meta property="og:description" content="Experience coastal elegance at Silver Rock - where modern luxury meets pristine beaches in Malindi, Kenya.">
+    <meta property="og:image" content="https://www.mokawagroup.co.ke/images/Silver_Rock-13-new.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Hotel",
+        "name": "Silver Rock Boutique Resort",
+        "url": "https://www.mokawagroup.co.ke/hotels/silver-rock.html",
+        "image": "https://www.mokawagroup.co.ke/images/Silver_Rock-13-new.jpg",
+        "description": "Luxurious beachfront boutique resort in Malindi with modern amenities, infinity pool, and ocean views.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Malindi",
+            "addressCountry": "Kenya"
+        },
+        "telephone": "+254769261077",
+        "starRating": {
+            "@type": "Rating",
+            "ratingValue": "4"
+        },
+        "priceRange": "$$",
+        "amenityFeature": [
+            {"@type": "LocationFeatureSpecification", "name": "Free WiFi"},
+            {"@type": "LocationFeatureSpecification", "name": "Swimming Pool"},
+            {"@type": "LocationFeatureSpecification", "name": "Restaurant"},
+            {"@type": "LocationFeatureSpecification", "name": "Bar"},
+            {"@type": "LocationFeatureSpecification", "name": "Beachfront"}
+        ]
+    }
+    </script>
+        <link rel="stylesheet" href="../css/mobile-responsive-fix.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L30QNK1ZG8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L30QNK1ZG8');
+</script>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-logo">
+                <a href="../index.html"><img src="../images/logo.jpg" alt="Mokawa Group Logo"></a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../mokawa-story.html">Mokawa Story</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li class="dropdown">
+                    <a href="../index.html#portfolio">Portfolio</a>
+                    <div class="dropdown-menu">
+                        <a href="silver-rock.html"><i class="fas fa-umbrella-beach"></i> Silver Rock Boutique Resort - Malindi</a>
+                        <a href="paradise-farm.html"><i class="fas fa-mountain"></i> Paradise Farm Cottages - Nyeri</a>
+                    </div>
+                </li>
+                <li><a href="../services.html">Services</a></li>
+                <li><a href="../index.html#team">Team</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <!-- HERO: Brand image shell with text matching the image layout -->
+    <section class="silver-hero">
+        <img src="../images/silver-rock-hero-final.png" alt="Silver Rock Boutique Resort" class="silver-hero-img">
+        <div class="silver-hero-content">
+            <div class="silver-hero-left">
+                <h1 class="silver-hero-title">SILVER ROCK<br>BOUTIQUE RESORT</h1>
+                <p class="silver-hero-desc">Silver Rock Hotel stands as Malindi's premier beachfront destination, recognised with the Best-in-Class Heritage Hospitality Award 2024.</p>
+                <div class="silver-hero-meta">
+                    <div class="silver-meta-item"><i class="fas fa-map-marker-alt"></i> Location: Malindi, Kenya</div>
+                    <div class="silver-meta-item"><i class="fas fa-water"></i> Property Type: Beachfront</div>
+                    <div class="silver-meta-item"><i class="fas fa-clock"></i> Check-in: 2:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div>
+                </div>
+                <div class="silver-hero-buttons">
+                    <a href="https://live.ipms247.com/booking/book-rooms-540113" class="hero-btn btn-whatsapp"><i class="fas fa-calendar-check"></i> Book Now</a>
+                    <a href="https://silverrockboutiqueresort.com" target="_blank" class="hero-btn btn-outline"><i class="fas fa-globe"></i> Visit Website</a>
+                    <a href="tel:+254738014791" class="hero-btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card animate-on-scroll d1">
+                <div class="stat-icon"><i class="fas fa-bed"></i></div>
+                <div class="stat-num">45</div>
+                <div class="stat-lbl">Luxury Rooms</div>
+            </div>
+            <div class="stat-card animate-on-scroll d2">
+                <div class="stat-icon"><i class="fas fa-swimming-pool"></i></div>
+                <div class="stat-num">2</div>
+                <div class="stat-lbl">Swimming Pools</div>
+            </div>
+            <div class="stat-card animate-on-scroll d3">
+                <div class="stat-icon"><i class="fas fa-utensils"></i></div>
+                <div class="stat-num">3</div>
+                <div class="stat-lbl">Restaurants</div>
+            </div>
+            <div class="stat-card animate-on-scroll d4">
+                <div class="stat-icon"><i class="fas fa-spa"></i></div>
+                <div class="stat-num">1</div>
+                <div class="stat-lbl">Spa</div>
+            </div>
+        </div>
+        <div class="award-bar animate-on-scroll d2">
+            <i class="fas fa-award"></i>
+            <h3>Best-in-Class Heritage Hospitality — Winner 2024</h3>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about-section">
+        <div class="about-inner">
+            <div class="section-header">
+                <p class="section-tag animate-on-scroll">Welcome To</p>
+                <h2 class="section-title animate-on-scroll">Silver Rock Boutique Resort</h2>
+                <div class="divider animate-on-scroll"></div>
+            </div>
+            <p class="about-text animate-on-scroll">Nestled on the pristine shores of Malindi, Silver Rock Boutique Resort stands as a beacon of coastal luxury and exceptional hospitality. Winner of the Best-in-Class Heritage Hospitality Awards 2024, we offer an unparalleled beachfront experience.</p>
+            <p class="about-text animate-on-scroll d2">Experience the perfect blend of modern luxury and traditional Swahili hospitality. From our boutique in-house spa to our ocean-view restaurant serving fresh coastal cuisine, every detail is crafted to create unforgettable memories.</p>
+        </div>
+    </section>
+
+    <!-- ACCOMMODATIONS -->
+    <section class="rooms-section">
+        <div class="section-header animate-on-scroll">
+            <p class="section-tag">Choose Your</p>
+            <h2 class="section-title">Room & Suites</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="rooms-grid">
+
+            <div class="room-card animate-on-scroll d1">
+                <div class="room-img">
+                    <img src="../images/Silver-Rock-80.jpg" alt="Standard Budget Room">
+                </div>
+                <div class="room-body">
+                    <h3 class="room-name">Standard Budget Room</h3>
+                    <p class="room-desc">Comfortable, well-furnished room ideal for budget-conscious travellers seeking quality accommodation near the beach.</p>
+                    <div class="room-specs">
+                        <span class="room-spec"><i class="fas fa-user-friends"></i> 1-2 Guests</span>
+                        <span class="room-spec"><i class="fas fa-bed"></i> Single/Double</span>
+                        <span class="room-spec"><i class="fas fa-wifi"></i> Free WiFi</span>
+                        <span class="room-spec"><i class="fas fa-snowflake"></i> No AC</span>
+                    </div>
+                    <div class="room-book">
+                        <a href="https://wa.me/254738014791?text=Hello,%20I%20would%20like%20to%20book%20a%20Budget%20Room" class="btn-book btn-book-primary"><i class="fas fa-calendar-check"></i> Book Now</a>
+                        <a href="tel:+254738014791" class="btn-book btn-book-secondary"><i class="fas fa-phone"></i> Call</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-card animate-on-scroll d2">
+                <div class="room-img">
+                    <img src="../images/Silver-Rock-36.jpg" alt="Deluxe Room">
+                </div>
+                <div class="room-body">
+                    <h3 class="room-name">Deluxe Room</h3>
+                    <p class="room-desc">Spacious and elegantly appointed room with modern amenities, air conditioning, and beautiful garden or partial ocean views.</p>
+                    <div class="room-specs">
+                        <span class="room-spec"><i class="fas fa-user-friends"></i> 1-2 Guests</span>
+                        <span class="room-spec"><i class="fas fa-bed"></i> Single/Double</span>
+                        <span class="room-spec"><i class="fas fa-snowflake"></i> Air Con</span>
+                        <span class="room-spec"><i class="fas fa-wifi"></i> Free WiFi</span>
+                    </div>
+                    <div class="room-book">
+                        <a href="https://wa.me/254738014791?text=Hello,%20I%20would%20like%20to%20book%20a%20Deluxe%20Room" class="btn-book btn-book-primary"><i class="fas fa-calendar-check"></i> Book Now</a>
+                        <a href="tel:+254738014791" class="btn-book btn-book-secondary"><i class="fas fa-phone"></i> Call</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-card animate-on-scroll d3">
+                <div class="room-img">
+                    <img src="../images/Silver-Rock-216.jpg" alt="Premier Sea View Room">
+                </div>
+                <div class="room-body">
+                    <h3 class="room-name">Premier Sea View</h3>
+                    <p class="room-desc">Wake up to breathtaking Indian Ocean views from your private balcony. Premium furnishings with direct sea panoramas.</p>
+                    <div class="room-specs">
+                        <span class="room-spec"><i class="fas fa-user-friends"></i> 1-2 Guests</span>
+                        <span class="room-spec"><i class="fas fa-water"></i> Sea View</span>
+                        <span class="room-spec"><i class="fas fa-snowflake"></i> Air Con</span>
+                        <span class="room-spec"><i class="fas fa-glass-martini-alt"></i> Minibar</span>
+                    </div>
+                    <div class="room-book">
+                        <a href="https://wa.me/254738014791?text=Hello,%20I%20would%20like%20to%20book%20a%20Premier%20Sea%20View%20Room" class="btn-book btn-book-primary"><i class="fas fa-calendar-check"></i> Book Now</a>
+                        <a href="tel:+254738014791" class="btn-book btn-book-secondary"><i class="fas fa-phone"></i> Call</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-card animate-on-scroll d1">
+                <div class="room-img">
+                    <img src="../images/Silver-Rock-22.jpg" alt="1-Bedroom Beachfront">
+                </div>
+                <div class="room-body">
+                    <h3 class="room-name">1-Bedroom Beachfront</h3>
+                    <p class="room-desc">Step directly onto the beach from your own private suite. Perfect for honeymooners and couples seeking the ultimate coastal experience.</p>
+                    <div class="room-specs">
+                        <span class="room-spec"><i class="fas fa-user-friends"></i> 2 Guests</span>
+                        <span class="room-spec"><i class="fas fa-umbrella-beach"></i> Beachfront</span>
+                        <span class="room-spec"><i class="fas fa-bath"></i> En-suite</span>
+                        <span class="room-spec"><i class="fas fa-snowflake"></i> Air Con</span>
+                    </div>
+                    <div class="room-book">
+                        <a href="https://wa.me/254738014791?text=Hello,%20I%20would%20like%20to%20book%20the%201BR%20Beachfront" class="btn-book btn-book-primary"><i class="fas fa-calendar-check"></i> Book Now</a>
+                        <a href="tel:+254738014791" class="btn-book btn-book-secondary"><i class="fas fa-phone"></i> Call</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-card animate-on-scroll d2">
+                <div class="room-img">
+                    <img src="../images/Silver-Rock-38.jpg" alt="Studio Beachfront Apartment">
+                </div>
+                <div class="room-body">
+                    <h3 class="room-name">Studio Beachfront Apt</h3>
+                    <p class="room-desc">A self-contained studio apartment right by the beach, ideal for extended stays with kitchen facilities and private terrace.</p>
+                    <div class="room-specs">
+                        <span class="room-spec"><i class="fas fa-user-friends"></i> 1-2 Guests</span>
+                        <span class="room-spec"><i class="fas fa-blender"></i> Kitchenette</span>
+                        <span class="room-spec"><i class="fas fa-umbrella-beach"></i> Beach Access</span>
+                        <span class="room-spec"><i class="fas fa-couch"></i> Living Area</span>
+                    </div>
+                    <div class="room-book">
+                        <a href="https://wa.me/254738014791?text=Hello,%20I%20would%20like%20to%20book%20the%20Studio%20Beachfront%20Apt" class="btn-book btn-book-primary"><i class="fas fa-calendar-check"></i> Book Now</a>
+                        <a href="tel:+254738014791" class="btn-book btn-book-secondary"><i class="fas fa-phone"></i> Call</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-card animate-on-scroll d3">
+                <div class="room-img">
+                    <img src="../images/Silver-Rock-155.jpg" alt="2-Bedroom Beachfront Apartment">
+                </div>
+                <div class="room-body">
+                    <h3 class="room-name">2-Bedroom Beachfront Apt</h3>
+                    <p class="room-desc">The ultimate family retreat — two full bedrooms, spacious living area, full kitchen, and private beachfront terrace.</p>
+                    <div class="room-specs">
+                        <span class="room-spec"><i class="fas fa-users"></i> Up to 4 Guests</span>
+                        <span class="room-spec"><i class="fas fa-kitchen-set"></i> Full Kitchen</span>
+                        <span class="room-spec"><i class="fas fa-umbrella-beach"></i> Beachfront</span>
+                        <span class="room-spec"><i class="fas fa-star"></i> Premium</span>
+                    </div>
+                    <div class="room-book">
+                        <a href="https://wa.me/254738014791?text=Hello,%20I%20would%20like%20to%20book%20the%202BR%20Beachfront%20Apt" class="btn-book btn-book-primary"><i class="fas fa-calendar-check"></i> Book Now</a>
+                        <a href="tel:+254738014791" class="btn-book btn-book-secondary"><i class="fas fa-phone"></i> Call</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FACILITIES WITH IMAGES -->
+    <section class="facilities-section">
+        <div class="section-header animate-on-scroll">
+            <p class="section-tag" style="color:var(--gold);">World-Class</p>
+            <h2 class="section-title white">Resort Facilities</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="facilities-grid">
+            <div class="facility-card animate-on-scroll d1">
+                <img src="../images/Silver_Rock-98__1_.jpg" alt="Private Beach">
+                <div class="facility-info">
+                    <div class="facility-icon"><i class="fas fa-umbrella-beach"></i></div>
+                    <h3 class="facility-name">Private Beach</h3>
+                    <p class="facility-desc">Exclusive access to pristine white sand beaches on the Indian Ocean coastline.</p>
+                    <span class="facility-tag">Complimentary</span>
+                </div>
+            </div>
+            <div class="facility-card animate-on-scroll d2">
+                <img src="../images/Silver_Rock-13-new.jpg" alt="Swimming Pools">
+                <div class="facility-info">
+                    <div class="facility-icon"><i class="fas fa-swimming-pool"></i></div>
+                    <h3 class="facility-name">Swimming Pools</h3>
+                    <p class="facility-desc">Two stunning pools — adult infinity pool with ocean views, and a separate children's pool.</p>
+                    <span class="facility-tag">2 Pools</span>
+                </div>
+            </div>
+            <div class="facility-card animate-on-scroll d3">
+                <img src="../images/Silver_Rock-2__2_.jpg" alt="Ocean View Restaurant">
+                <div class="facility-info">
+                    <div class="facility-icon"><i class="fas fa-utensils"></i></div>
+                    <h3 class="facility-name">Ocean-View Dining</h3>
+                    <p class="facility-desc">Three restaurants serving fresh coastal cuisine, Swahili specialties and international dishes.</p>
+                    <span class="facility-tag">3 Restaurants</span>
+                </div>
+            </div>
+            <div class="facility-card animate-on-scroll d4">
+                <img src="../images/Silver-Rock-145.jpg" alt="Boutique Spa">
+                <div class="facility-info">
+                    <div class="facility-icon"><i class="fas fa-spa"></i></div>
+                    <h3 class="facility-name">Boutique Spa</h3>
+                    <p class="facility-desc">Relaxing treatments including Swedish massage, aromatherapy, body scrubs and couple's packages. Open 10AM–7PM.</p>
+                    <span class="facility-tag">Daily 10AM–7PM</span>
+                </div>
+            </div>
+            <div class="facility-card animate-on-scroll d5">
+                <img src="../images/Silver-Rock-57.jpg" alt="Conference Room">
+                <div class="facility-info">
+                    <div class="facility-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="facility-name">Conference Room</h3>
+                    <p class="facility-desc">Professional meeting and event space with ocean views, AV equipment and dedicated catering.</p>
+                    <span class="facility-tag">Events Available</span>
+                </div>
+            </div>
+            <div class="facility-card animate-on-scroll d6">
+                <img src="../images/Silver_Rock-7.jpg" alt="Fitness & Recreation">
+                <div class="facility-info">
+                    <div class="facility-icon"><i class="fas fa-dumbbell"></i></div>
+                    <h3 class="facility-name">Fitness & Recreation</h3>
+                    <p class="facility-desc">Well-equipped fitness centre, water sports, and beach activities for an active stay.</p>
+                    <span class="facility-tag">Complimentary</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section">
+        <div class="section-header aos">
+            <span class="section-tag" style="color:var(--gold);">Discover</span>
+            <h2 class="section-title white">Resort Gallery</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="gal-scroll-wrap">
+            <div class="gal-scroll">
+            <a href="../images/Silver_Rock-98__1_.jpg" class="gal-item aos">
+                <img src="../images/Silver_Rock-98__1_.jpg" alt="Beachfront Paradise">
+                <div class="gal-ov"><span>Beachfront Paradise</span></div>
+            </a>
+            <a href="../images/Silver_Rock-13-new.jpg" class="gal-item aos">
+                <img src="../images/Silver_Rock-13-new.jpg" alt="Infinity Pool">
+                <div class="gal-ov"><span>Infinity Pool</span></div>
+            </a>
+            <a href="../images/Silver_Rock-2__2_.jpg" class="gal-item aos">
+                <img src="../images/Silver_Rock-2__2_.jpg" alt="Ocean Views">
+                <div class="gal-ov"><span>Ocean Views</span></div>
+            </a>
+            <a href="../images/Silver_Rock-7.jpg" class="gal-item aos">
+                <img src="../images/Silver_Rock-7.jpg" alt="Resort Exterior">
+                <div class="gal-ov"><span>Resort Exterior</span></div>
+            </a>
+            <a href="../images/Silver_Rock-13.jpg" class="gal-item aos">
+                <img src="../images/Silver_Rock-13.jpg" alt="Tropical Gardens">
+                <div class="gal-ov"><span>Tropical Gardens</span></div>
+            </a>
+            <a href="../images/Silver-Rock-22.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-22.jpg" alt="Deluxe Room">
+                <div class="gal-ov"><span>Deluxe Room</span></div>
+            </a>
+            <a href="../images/Silver-Rock-36.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-36.jpg" alt="Swahili Suite">
+                <div class="gal-ov"><span>Swahili Suite</span></div>
+            </a>
+            <a href="../images/Silver-Rock-38.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-38.jpg" alt="Beachfront Studio">
+                <div class="gal-ov"><span>Beachfront Studio</span></div>
+            </a>
+            <a href="../images/Silver-Rock-45.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-45.jpg" alt="Garden View Room">
+                <div class="gal-ov"><span>Garden View Room</span></div>
+            </a>
+            <a href="../images/Silver-Rock-57.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-57.jpg" alt="Relaxation Lounge">
+                <div class="gal-ov"><span>Relaxation Lounge</span></div>
+            </a>
+            <a href="../images/Silver-Rock-80.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-80.jpg" alt="Standard Room">
+                <div class="gal-ov"><span>Standard Room</span></div>
+            </a>
+            <a href="../images/Silver-Rock-114.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-114.jpg" alt="Heritage Room">
+                <div class="gal-ov"><span>Heritage Room</span></div>
+            </a>
+            <a href="../images/Silver-Rock-116.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-116.jpg" alt="Twin Room">
+                <div class="gal-ov"><span>Twin Room</span></div>
+            </a>
+            <a href="../images/Silver-Rock-122.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-122.jpg" alt="Classic Suite">
+                <div class="gal-ov"><span>Classic Suite</span></div>
+            </a>
+            <a href="../images/Silver-Rock-145.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-145.jpg" alt="Premium Room">
+                <div class="gal-ov"><span>Premium Room</span></div>
+            </a>
+            <a href="../images/Silver-Rock-155.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-155.jpg" alt="Sea View Suite">
+                <div class="gal-ov"><span>Sea View Suite</span></div>
+            </a>
+            <a href="../images/Silver-Rock-216.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-216.jpg" alt="Ocean View Bedroom">
+                <div class="gal-ov"><span>Ocean View Bedroom</span></div>
+            </a>
+            <a href="../images/Silver-Rock-23.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-23.jpg" alt="Resort Facilities">
+                <div class="gal-ov"><span>Resort Facilities</span></div>
+            </a>
+            <a href="../images/Silver-Rock-24.jpg" class="gal-item aos">
+                <img src="../images/Silver-Rock-24.jpg" alt="Beachfront Amenities">
+                <div class="gal-ov"><span>Beachfront Amenities</span></div>
+            </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title animate-on-scroll">Ready to Experience Coastal Excellence?</h2>
+        <p class="cta-text animate-on-scroll d2">Book your stay at Silver Rock Boutique Resort — Malindi's premier beachfront destination. Check-in: 12:00 PM · Check-out: 11:00 AM</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/254738014791" class="hero-btn btn-whatsapp animate-on-scroll d3"><i class="fab fa-whatsapp"></i> WhatsApp: 0738 014 791</a>
+            <a href="tel:0118111048" class="hero-btn btn-outline animate-on-scroll d4"><i class="fas fa-phone"></i> Reception: 011 8111048</a>
+            <a href="mailto:silver.rock@mokawagroup.com" class="hero-btn btn-outline animate-on-scroll d5"><i class="fas fa-envelope"></i> Email Us</a>
+        </div>
+    </section>
+
+    <footer class="page-footer">
+        <img src="../images/logo_footer.svg" alt="Mokawa Group">
+        <p>Rooted in Culture, Designed to Deliver</p>
+        <div class="footer-links-row">
+            <a href="silver-rock.html">Silver Rock Resort</a>
+            <a href="paradise-farm.html">Paradise Farm Cottages</a>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Mokawa Group Ltd. All rights reserved. | Professionally Managed by Mokawa Group | Website managed and developed by Megzier Group Ltd.</div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="">
+        <span class="lightbox-next" onclick="changeImage(1)">&#10095;</span>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/lightbox.js"></script>
+    <script src="../js/scroll-animations.js"></script>
+    <script src="../js/gallery-drag.js"></script>
+    <script>
+        // Scroll animation observer
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('animated'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll,.anim-left,.anim-right').forEach(el => obs.observe(el));
+    </script>
+</body>
+</html>

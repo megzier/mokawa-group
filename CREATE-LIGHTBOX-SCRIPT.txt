@@ -1,0 +1,16 @@
+LIGHTBOX IMPLEMENTATION PLAN:
+
+1. Add lightbox modal HTML structure before closing </body>
+2. Add lightbox CSS styles
+3. Add JavaScript for:
+   - Opening lightbox on image click
+   - Closing lightbox
+   - Previous/Next navigation
+   - Keyboard controls (ESC, arrows)
+
+4. Convert gallery links from:
+   <a href="image.jpg" target="_blank">
+   To:
+   <a href="image.jpg" onclick="openLightbox(event, 0)">
+
+5. Remove target="_blank" and add onclick handlers

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradise Farm Cottages | Mokawa Group - Nyeri Mountain Retreat</title>
+    <meta name="developer" content="This website is managed and developed by Megzier Group Ltd">
+    <meta name="designer" content="Megzier Group Ltd">
+    <meta name="description" content="Paradise Farm Cottages Nyeri - Scenic mountain retreat near waterfalls. Executive cottages, farm activities, restaurant.">
+    <link rel="icon" type="image/jpeg" href="../images/logo_ABOUT.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/lightbox.css">
+    <link rel="stylesheet" href="../css/gallery-scroll.css">
+    <style>
+        :root{--gold:#C9A961;--gold-dark:#8B6F47;--green:#2D7A3E;--green2:#3A9D4E;--dark:#2C1810;--light:#6B5446;}
+        *{box-sizing:border-box;margin:0;padding:0;}
+        body{font-family:'Montserrat',sans-serif;background:#fff;}
+        @media(min-width:769px){.navbar .container{display:flex!important;justify-content:space-between!important;align-items:center!important;flex-wrap:nowrap!important;}.navbar-logo{flex-shrink:0!important;}.navbar-menu{display:flex!important;flex-direction:row!important;align-items:center!important;}}
+        @media(max-width:768px){.navbar-menu{display:none!important;}.navbar-menu.active{display:flex!important;}.menu-toggle{display:flex!important;}}
+        .navbar{z-index:10000!important;}
+        /* ─── PARADISE FARM HERO ─── */
+        body{font-family:'Lato',sans-serif;}
+        .pf-hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:stretch;overflow:hidden;background:#f5ede0;}
+        .pf-hero-left{position:relative;flex:0 0 52%;overflow:hidden;}
+        .pf-slider{position:absolute;inset:0;}
+        .pf-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.8s ease;transform:scale(1.05);}
+        .pf-slide.active{opacity:1;animation:pf-drift 14s ease-in-out infinite alternate;}
+        @keyframes pf-drift{0%{transform:scale(1.05) translateX(0);}100%{transform:scale(1.12) translateX(-2%);}}
+        .pf-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(180,90,30,.18) 0%,rgba(90,50,20,.45) 60%,rgba(50,28,10,.7) 100%);}
+        .pf-arch{position:absolute;top:0;right:-1px;bottom:0;width:90px;z-index:10;background:#f5ede0;clip-path:ellipse(90px 55% at 100% 50%);}
+        .pf-arch::before{content:'';position:absolute;inset:8% auto 8% -3px;width:4px;background:linear-gradient(180deg,transparent,#C9A961 20%,#C9A961 80%,transparent);border-radius:3px;}
+        .pf-mountain-deco{position:absolute;bottom:0;left:0;right:0;height:100px;z-index:8;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,95 L150,55 L300,85 L450,40 L600,70 L750,35 L900,65 L1050,30 L1200,75 L1200,120 L0,120Z' fill='%23f5ede0'/%3E%3C/svg%3E") bottom/cover no-repeat;}
+        .pf-indicators{position:absolute;bottom:2.5rem;left:2rem;display:flex;gap:.5rem;z-index:20;}
+        .pf-dot{width:24px;height:4px;border-radius:2px;background:rgba(201,169,97,.35);cursor:pointer;transition:all .4s;}
+        .pf-dot.active{background:#C9A961;width:40px;}
+        .pf-hero-right{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 5rem 5rem;background:#f5ede0;position:relative;z-index:5;}
+        .pf-hero-right::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 15%,rgba(201,169,97,.1) 0%,transparent 70%);pointer-events:none;}
+        .pf-dots{position:absolute;top:5rem;right:2.5rem;display:grid;grid-template-columns:repeat(4,7px);gap:5px;opacity:.3;}
+        .pf-dots span{width:7px;height:7px;border-radius:50%;background:#8B5E3C;display:block;}
+        .pf-dots span:nth-child(even){background:#C9A961;}
+        .pf-hero-logo{width:100px;margin-bottom:1.6rem;animation:pf-drop .9s cubic-bezier(.22,1,.36,1) both;}
+        .pf-overline{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#8B5E3C;margin-bottom:.9rem;font-weight:700;display:flex;align-items:center;gap:.8rem;animation:pf-fade .9s ease .2s both;}
+        .pf-overline::before{content:'';display:inline-block;width:28px;height:2px;background:#C9A961;border-radius:1px;}
+        .pf-hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.9rem);font-weight:900;color:#3B1F0A;line-height:1.08;margin-bottom:.5rem;animation:pf-rise 1s cubic-bezier(.22,1,.36,1) .1s both;}
+        .pf-hero-title em{font-style:italic;font-weight:400;color:#8B5E3C;display:block;font-size:.85em;}
+        .pf-location{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:#6B4C2A;background:rgba(201,169,97,.15);border:1px solid rgba(201,169,97,.4);padding:.4rem 1rem;border-radius:50px;margin:1.1rem 0 1.4rem;font-weight:600;letter-spacing:.05em;animation:pf-fade .9s ease .3s both;}
+        .pf-location i{color:#C9A961;font-size:.78rem;}
+        .pf-rule{width:50px;height:3px;background:linear-gradient(90deg,#C9A961,#8B5E3C);border-radius:2px;margin-bottom:1.4rem;animation:pf-expand .9s ease .4s both;}
+        @keyframes pf-expand{from{width:0;opacity:0;}to{width:50px;opacity:1;}}
+        .pf-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(.95rem,1.6vw,1.2rem);color:#6B4C2A;line-height:1.8;margin-bottom:1.8rem;font-style:italic;animation:pf-fade .9s ease .45s both;}
+        .pf-chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2.2rem;animation:pf-fade .9s ease .55s both;}
+        .pf-chip{display:flex;align-items:center;gap:.4rem;background:rgba(139,94,60,.1);border:1px solid rgba(139,94,60,.2);color:#5C3A1A;padding:.35rem .85rem;border-radius:50px;font-size:.76rem;font-weight:600;letter-spacing:.04em;transition:all .25s;}
+        .pf-chip:hover{background:rgba(201,169,97,.2);border-color:#C9A961;}
+        .pf-chip i{color:#8B5E3C;font-size:.72rem;}
+        .pf-cta{display:flex;gap:1rem;flex-wrap:wrap;animation:pf-rise 1s cubic-bezier(.22,1,.36,1) .65s both;}
+        .pf-btn{padding:.85rem 2rem;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s ease;letter-spacing:.03em;}
+        .pf-btn-primary{background:linear-gradient(135deg,#25D366,#1da855);color:white;box-shadow:0 6px 20px rgba(37,211,102,.3);}
+        .pf-btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(37,211,102,.4);}
+        .pf-btn-secondary{background:transparent;border:2px solid #8B5E3C;color:#3B1F0A;}
+        .pf-btn-secondary:hover{background:#8B5E3C;color:white;transform:translateY(-3px);}
+        .pf-stats-ribbon{display:none;}
+        
+        
+        
+        
+        @keyframes pf-drop{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+        @keyframes pf-rise{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+        @keyframes pf-fade{from{opacity:0;}to{opacity:1;}}
+        @media(max-width:900px){.pf-hero{flex-direction:column;}.pf-hero-left{flex:0 0 48vh;}.pf-arch{display:none;}.pf-mountain-deco{display:none;}.pf-hero-right{padding:2rem 1.6rem 2.5rem;}.pf-hero-title{font-size:2.2rem;}.pf-stats-ribbon{position:static;border-radius:0;}.pf-dots{display:none;}}to{opacity:1;transform:translateY(0);}}
+        .stats-section{background:linear-gradient(135deg,#1a1410,#2C2416);padding:4rem 5%;position:relative;}
+        .stats-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+        .stats-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;}
+        .stat-card{text-align:center;padding:2.5rem 1.5rem;background:rgba(201,169,97,.08);border:1px solid rgba(201,169,97,.2);border-radius:15px;transition:all .4s;}
+        .stat-card:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 20px 50px rgba(201,169,97,.2);}
+        .stat-icon{width:70px;height:70px;margin:0 auto 1rem;background:linear-gradient(135deg,var(--gold),var(--gold-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:white;}
+        .stat-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:700;color:var(--gold);line-height:1;}
+        .stat-lbl{font-size:.95rem;color:#ccc;text-transform:uppercase;letter-spacing:2px;margin-top:.4rem;}
+        .section-header{text-align:center;margin-bottom:3rem;}
+        .section-tag{font-size:1rem;color:var(--gold);text-transform:uppercase;letter-spacing:3px;display:block;}
+        .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.5rem);color:var(--dark);font-weight:300;letter-spacing:2px;margin:.5rem 0;}
+        .section-title.white{color:white;}
+        .divider{width:80px;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1rem auto;}
+        .about-section{padding:6rem 5%;background:white;}
+        .about-inner{max-width:1100px;margin:0 auto;}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+        .about-img{border-radius:20px;overflow:hidden;height:450px;}
+        .about-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+        .about-img:hover img{transform:scale(1.05);}
+        .about-content .section-tag{text-align:left;}
+        .about-content .section-title{text-align:left;}
+        .about-content .divider{margin-left:0;}
+        .about-text{font-size:1rem;line-height:1.9;color:var(--light);margin-bottom:1rem;}
+        .chips{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem;}
+        .chip{display:flex;align-items:center;gap:.5rem;background:#f0f7f2;padding:.5rem 1rem;border-radius:25px;font-size:.85rem;color:var(--dark);font-weight:500;}
+        .chip i{color:var(--green);}
+        .rooms-section{padding:6rem 5%;background:linear-gradient(135deg,#f5f0eb,#fff);}
+        .rooms-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2.5rem;}
+        .room-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08);transition:all .4s;}
+        .room-card:hover{transform:translateY(-12px);box-shadow:0 25px 60px rgba(0,0,0,.15);}
+        .room-img{position:relative;height:290px;overflow:hidden;}
+        .room-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+        .room-card:hover .room-img img{transform:scale(1.1);}
+        .room-badge{position:absolute;top:1rem;right:1rem;background:var(--green);color:white;padding:.3rem .9rem;border-radius:20px;font-size:.8rem;font-weight:600;}
+        .room-body{padding:2rem;}
+        .room-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--dark);margin-bottom:.5rem;}
+        .room-desc{font-size:.95rem;color:var(--light);line-height:1.7;margin-bottom:1.2rem;}
+        .room-specs{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:1.5rem;}
+        .room-spec{display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--light);background:#f0f7f2;padding:.3rem .8rem;border-radius:20px;}
+        .room-spec i{color:var(--green);}
+        .room-book{display:flex;gap:.8rem;}
+        .btn-book{flex:1;padding:.8rem;border:none;border-radius:50px;font-weight:600;font-size:.9rem;cursor:pointer;text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;gap:.4rem;transition:all .3s;}
+        .btn-p{background:#25D366;color:white;}
+        .btn-p:hover{background:#20BD5A;transform:translateY(-2px);}
+        .btn-s{background:transparent;border:2px solid var(--green);color:var(--dark);}
+        .btn-s:hover{background:var(--green);color:white;}
+        .facilities-section{padding:6rem 5%;background:#1a1410;}
+        .fac-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2.5rem;}
+        .fac-card{position:relative;border-radius:20px;overflow:hidden;height:420px;transition:all .4s;}
+        .fac-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+        .fac-card:hover img{transform:scale(1.08);}
+        .fac-info{position:absolute;bottom:0;left:0;right:0;padding:2.5rem 2rem 2rem;background:linear-gradient(transparent,rgba(0,0,0,.88));}
+        .fac-icon{width:55px;height:55px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:white;margin-bottom:1rem;}
+        .fac-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:white;margin-bottom:.5rem;}
+        .fac-desc{font-size:.9rem;color:rgba(255,255,255,.82);line-height:1.6;}
+        .fac-tag{display:inline-block;background:var(--green);color:white;padding:.3rem .8rem;border-radius:20px;font-size:.75rem;font-weight:600;margin-top:.8rem;}
+        .activities-strip{padding:5rem 5%;background:linear-gradient(135deg,var(--green),var(--green2));}
+        .act-inner{max-width:1200px;margin:0 auto;text-align:center;}
+        .act-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);color:white;font-weight:300;letter-spacing:2px;margin-bottom:.5rem;}
+        .act-sub{color:rgba(255,255,255,.8);margin-bottom:3rem;font-size:1.05rem;}
+        .act-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;}
+        .act-item{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:15px;padding:1.8rem 1rem;text-align:center;transition:all .3s;}
+        .act-item:hover{background:rgba(255,255,255,.25);transform:translateY(-6px);}
+        .act-item i{font-size:2.2rem;color:white;margin-bottom:.8rem;display:block;}
+        .act-item span{color:white;font-size:.9rem;font-weight:600;letter-spacing:1px;}
+        .gallery-section{padding:6rem 5%;background:#0d0a08;}
+        .gal-grid{max-width:1600px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+        .gal-wide{grid-column:span 2;}
+        .gal-item{position:relative;height:300px;border-radius:12px;overflow:hidden;display:block;}
+        .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+        .gal-item:hover img{transform:scale(1.08);}
+        .gal-ov{position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.7));opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:1.5rem;}
+        .gal-item:hover .gal-ov{opacity:1;}
+        .gal-ov span{color:white;font-size:1.1rem;font-weight:600;}
+        .cta-section{padding:6rem 5%;background:linear-gradient(135deg,var(--green),var(--green2));text-align:center;color:white;}
+        .cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;letter-spacing:2px;margin-bottom:1rem;}
+        .cta-info{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+        .cta-info-item{display:flex;align-items:center;gap:.6rem;font-size:.95rem;opacity:.9;}
+        .cta-info-item i{color:var(--gold);}
+        .cta-btns{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+        .btn-ww{background:white;color:var(--green);border:none;}
+        .btn-ww:hover{background:var(--gold);color:white;transform:translateY(-3px);}
+        .page-footer{background:#1a1410;padding:3rem 5%;text-align:center;}
+        .page-footer img{height:60px;margin-bottom:1rem;}
+        .page-footer p{color:#aaa;font-size:.9rem;}
+        .footer-links-row{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin:1.5rem 0;}
+        .footer-links-row a{color:var(--gold);text-decoration:none;font-size:.9rem;}
+        .footer-links-row a:hover{color:white;}
+        .footer-bottom{border-top:1px solid rgba(201,169,97,.2);padding-top:1.5rem;margin-top:1.5rem;color:#888;font-size:.85rem;}
+        .aos{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1);}
+        .aos.in{opacity:1;transform:translateY(0);}
+        .aol{opacity:0;transform:translateX(-40px);transition:all .8s cubic-bezier(.4,0,.2,1);}
+        .aor{opacity:0;transform:translateX(40px);transition:all .8s cubic-bezier(.4,0,.2,1);}
+        .aol.in,.aor.in{opacity:1;transform:translateX(0);}
+        .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}.d5{transition-delay:.5s;}.d6{transition-delay:.6s;}
+        @media(max-width:900px){.about-grid{grid-template-columns:1fr;}.about-img{height:300px;}}
+        @media(max-width:768px){.rooms-grid,.fac-grid,.stats-grid,.act-grid{grid-template-columns:1fr!important;}.gal-grid{grid-template-columns:1fr;}.gal-wide{grid-column:span 1;}.hero-btns,.cta-btns,.cta-info{flex-direction:column;align-items:center;}}
+    </style>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Paradise Farm Cottages Mbui - Enchanting highland retreat in Nyeri, Kenya. 8 luxury rooms, waterfall views, farm-to-table dining, wellness spa. Perfect for weekend getaways and team building. Book now: 0712 160 908">
+    <meta name="keywords" content="Paradise Farm Nyeri, Nyeri hotels, Kenya highland retreat, Aberdare ranges accommodation, waterfall hotels Kenya, farm cottages Kenya, team building venues Nyeri, wellness retreat Kenya">
+    <meta name="author" content="Mokawa Group Ltd">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.mokawagroup.co.ke/hotels/paradise-farm.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mokawagroup.co.ke/hotels/paradise-farm.html">
+    <meta property="og:title" content="Paradise Farm Cottages - Highland Retreat in Nyeri, Kenya">
+    <meta property="og:description" content="An enchanting highland retreat immersed in nature - where waterfalls, farm-fresh cuisine and tranquillity meet.">
+    <meta property="og:image" content="https://www.mokawagroup.co.ke/images/Paradise-62.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Hotel",
+        "name": "Paradise Farm Cottages Mbui",
+        "url": "https://www.mokawagroup.co.ke/hotels/paradise-farm.html",
+        "image": "https://www.mokawagroup.co.ke/images/Paradise-62.jpg",
+        "description": "Highland retreat in Nyeri with waterfall views, farm-to-table dining, and 8 luxury rooms.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Nyeri",
+            "addressCountry": "Kenya"
+        },
+        "telephone": "+254769261077",
+        "starRating": {
+            "@type": "Rating",
+            "ratingValue": "4"
+        },
+        "amenityFeature": [
+            {"@type": "LocationFeatureSpecification", "name": "Free WiFi"},
+            {"@type": "LocationFeatureSpecification", "name": "Spa"},
+            {"@type": "LocationFeatureSpecification", "name": "Restaurant"},
+            {"@type": "LocationFeatureSpecification", "name": "Conference Facilities"}
+        ]
+    }
+    </script>
+        <link rel="stylesheet" href="../css/mobile-responsive-fix.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L30QNK1ZG8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L30QNK1ZG8');
+</script>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-logo">
+                <a href="../index.html"><img src="../images/logo.jpg" alt="Mokawa Group Logo"></a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../mokawa-story.html">Mokawa Story</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li class="dropdown">
+                    <a href="../index.html#portfolio">Portfolio</a>
+                    <div class="dropdown-menu">
+                        <a href="silver-rock.html"><i class="fas fa-umbrella-beach"></i> Silver Rock Boutique Resort - Malindi</a>
+                        <a href="paradise-farm.html"><i class="fas fa-mountain"></i> Paradise Farm Cottages - Nyeri</a>
+                    </div>
+                </li>
+                <li><a href="../services.html">Services</a></li>
+                <li><a href="../index.html#team">Team</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <!-- ══════ PARADISE FARM HERO — Brand Redesign ══════ -->
+    <section class="pf-hero">
+
+        <!-- LEFT: Atmospheric image panel with arch border -->
+        <div class="pf-hero-left">
+            <div class="pf-slider">
+                <div class="pf-slide active" style="background-image:url('../images/Paradise-62.jpg');"></div>
+                <div class="pf-slide" style="background-image:url('../images/Paradise-118__1_.jpg');"></div>
+                <div class="pf-slide" style="background-image:url('../images/Paradise-79.jpg');"></div>
+                <div class="pf-slide" style="background-image:url('../images/Paradise-150.jpg');"></div>
+            </div>
+            <!-- Arch cutout -->
+            <div class="pf-arch"></div>
+            <!-- Mountain silhouette at base -->
+            <div class="pf-mountain-deco"></div>
+            <!-- Slide indicators -->
+            <div class="pf-indicators">
+                <div class="pf-dot active" onclick="pfGoSlide(0)"></div>
+                <div class="pf-dot" onclick="pfGoSlide(1)"></div>
+                <div class="pf-dot" onclick="pfGoSlide(2)"></div>
+                <div class="pf-dot" onclick="pfGoSlide(3)"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Brand content panel -->
+        <div class="pf-hero-right">
+            <!-- Decorative dot grid -->
+            <div class="pf-dots">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+            </div>
+
+            <img src="../images/paradise-logo.png" alt="Paradise Farm Cottages" class="pf-hero-logo">
+
+            <span class="pf-overline">Mokawa Group — Nyeri, Kenya</span>
+
+            <h1 class="pf-hero-title">
+                Paradise Farm
+                <em>Cottages Mbui</em>
+            </h1>
+
+            <div class="pf-location">
+                <i class="fas fa-map-marker-alt"></i> Approx. 10km from Nyeri Town &nbsp;·&nbsp;
+                <i class="fas fa-mountain"></i> Aberdare Ranges
+            </div>
+
+            <div class="pf-rule"></div>
+
+            <p class="pf-tagline">
+                "An enchanting highland retreat immersed in the richness of nature —<br>
+                where waterfalls, farm-fresh cuisine and tranquillity meet."
+            </p>
+
+            <div class="pf-chips">
+                <span class="pf-chip"><i class="fas fa-tint"></i> Waterfall Views</span>
+                <span class="pf-chip"><i class="fas fa-leaf"></i> Farm-to-Table</span>
+                <span class="pf-chip"><i class="fas fa-spa"></i> Wellness &amp; Spa</span>
+                <span class="pf-chip"><i class="fas fa-users"></i> Team Building</span>
+                <span class="pf-chip"><i class="fas fa-bed"></i> 8 Luxury Rooms</span>
+                <span class="pf-chip"><i class="fas fa-wifi"></i> Free WiFi</span>
+            </div>
+
+            <div class="pf-cta">
+                <a href="https://wa.me/254769261077?text=Hello,%20I%20would%20like%20to%20book%20at%20Paradise%20Farm%20Cottages" class="pf-btn pf-btn-primary">
+                    <i class="fab fa-whatsapp"></i> Book on WhatsApp
+                </a>
+                <a href="tel:+254769261077" class="pf-btn pf-btn-secondary">
+                    <i class="fas fa-phone"></i> 0769 261 077
+                </a>
+            </div>
+        </div>
+
+
+        </div>
+
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card aos d1"><div class="stat-icon"><i class="fas fa-bed"></i></div><div class="stat-num">8</div><div class="stat-lbl">Executive Rooms</div></div>
+            <div class="stat-card aos d2"><div class="stat-icon"><i class="fas fa-utensils"></i></div><div class="stat-num">1</div><div class="stat-lbl">Restaurant</div></div>
+            <div class="stat-card aos d3"><div class="stat-icon"><i class="fas fa-water"></i></div><div class="stat-num">1</div><div class="stat-lbl">Waterfall Views</div></div>
+            <div class="stat-card aos d4"><div class="stat-icon"><i class="fas fa-tractor"></i></div><div class="stat-num">∞</div><div class="stat-lbl">Farm Activities</div></div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-inner">
+            <div class="about-grid">
+                <div class="about-img aol">
+                    <img src="../images/Paradise-62.jpg" alt="Paradise Farm Cottages">
+                </div>
+                <div class="about-content aor">
+                    <span class="section-tag">Welcome To</span>
+                    <h2 class="section-title">Paradise Farm Cottages</h2>
+                    <div class="divider"></div>
+                    <p class="about-text">Nestled in the scenic highlands of Nyeri, Paradise Farm Cottages offers a tranquil escape surrounded by lush greenery, the gentle sound of waterfalls, and crisp mountain air.</p>
+                    <p class="about-text">Our charming retreat combines rustic elegance with modern comfort. From farm-to-table dining to guided nature trails and authentic farm experiences — this is where families reconnect, couples unwind, and nature lovers find their paradise.</p>
+                    <div class="chips">
+                        <div class="chip"><i class="fas fa-map-marker-alt"></i> Nyeri, Kenya</div>
+                        <div class="chip"><i class="fas fa-mountain"></i> Highland Setting</div>
+                        <div class="chip"><i class="fas fa-leaf"></i> Farm-to-Table</div>
+                        <div class="chip"><i class="fas fa-clock"></i> Check-in: 12 PM</div>
+                        <div class="chip"><i class="fas fa-sign-out-alt"></i> Check-out: 10 AM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rooms-section">
+        <div class="section-header aos">
+            <span class="section-tag">Choose Your</span>
+            <h2 class="section-title">Rooms &amp; Cottages</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="rooms-grid">
+            <div class="room-card aos d1">
+                <div class="room-img"><img src="../images/Paradise-13.jpg" alt="Standard Room"><span class="room-badge">Standard</span></div>
+                <div class="room-body">
+                    <h3 class="room-name">Standard Room</h3>
+                    <p class="room-desc">Cosy, well-appointed rooms with farm views and all essentials for a comfortable countryside stay.</p>
+                    <div class="room-specs">
+                        <span class="room-spec"><i class="fas fa-user-friends"></i> 1–2 Guests</span>
+                        <span class="room-spec"><i class="fas fa-bed"></i> Double Bed</span>
+                        <span class="room-spec"><i class="fas fa-bath"></i> En-suite</span>
+                        <span class="room-spec"><i class="fas fa-wifi"></i> Free WiFi</span>
+                    </div>
+                    <div class="room-book">
+                        <a href="https://wa.me/254769261077?text=Standard%20Room%20-%20Paradise%20Farm" class="btn-book btn-p"><i class="fab fa-whatsapp"></i> Book Now</a>
+                        <a href="tel:+254769261077" class="btn-book btn-s"><i class="fas fa-phone"></i> Call</a>
+                    </div>
+                </div>
+            </div>
+            <div class="room-card aos d2">
+                <div class="room-img"><img src="../images/Paradise-100.jpg" alt="Executive Cottage"><span class="room-badge">Executive</span></div>
+                <div class="room-body">
+                    <h3 class="room-name">Executive Cottage</h3>
+                    <p class="room-desc">Private standalone cottage with elevated views of the surrounding forest and waterfall — the ultimate nature immersion.</p>
+                    <div class="room-specs">
+                        <span class="room-spec"><i class="fas fa-user-friends"></i> 1–3 Guests</span>
+                        <span class="room-spec"><i class="fas fa-home"></i> Private Cottage</span>
+                        <span class="room-spec"><i class="fas fa-water"></i> Waterfall View</span>
+                        <span class="room-spec"><i class="fas fa-fire"></i> Fireplace</span>
+                    </div>
+                    <div class="room-book">
+                        <a href="https://wa.me/254769261077?text=Executive%20Cottage%20-%20Paradise%20Farm" class="btn-book btn-p"><i class="fab fa-whatsapp"></i> Book Now</a>
+                        <a href="tel:+254769261077" class="btn-book btn-s"><i class="fas fa-phone"></i> Call</a>
+                    </div>
+                </div>
+            </div>
+            <div class="room-card aos d3">
+                <div class="room-img"><img src="../images/Paradise-135.jpg" alt="Family Cottage"><span class="room-badge">Family</span></div>
+                <div class="room-body">
+                    <h3 class="room-name">Family Cottage</h3>
+                    <p class="room-desc">Spacious family-friendly cottage with two bedrooms, shared lounge and direct access to the farm grounds.</p>
+                    <div class="room-specs">
+                        <span class="room-spec"><i class="fas fa-users"></i> Up to 5 Guests</span>
+                        <span class="room-spec"><i class="fas fa-door-open"></i> 2 Bedrooms</span>
+                        <span class="room-spec"><i class="fas fa-couch"></i> Lounge</span>
+                        <span class="room-spec"><i class="fas fa-child"></i> Family Friendly</span>
+                    </div>
+                    <div class="room-book">
+                        <a href="https://wa.me/254769261077?text=Family%20Cottage%20-%20Paradise%20Farm" class="btn-book btn-p"><i class="fab fa-whatsapp"></i> Book Now</a>
+                        <a href="tel:+254769261077" class="btn-book btn-s"><i class="fas fa-phone"></i> Call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="facilities-section">
+        <div class="section-header aos">
+            <span class="section-tag" style="color:var(--gold);">Explore</span>
+            <h2 class="section-title white">Farm Facilities</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="fac-grid">
+            <div class="fac-card aos d1"><img src="../images/Paradise-32.jpg" alt="Restaurant"><div class="fac-info"><div class="fac-icon"><i class="fas fa-utensils"></i></div><h3 class="fac-name">Farm Restaurant</h3><p class="fac-desc">Fresh farm-to-table meals from ingredients grown on-site. Breakfast, lunch and dinner daily in a warm rustic setting.</p><span class="fac-tag">3 Meals Daily</span></div></div>
+            <div class="fac-card aos d2"><img src="../images/Paradise-118__1_.jpg" alt="Waterfall"><div class="fac-info"><div class="fac-icon"><i class="fas fa-water"></i></div><h3 class="fac-name">Waterfall &amp; Picnic Area</h3><p class="fac-desc">Relax beside a stunning natural waterfall. Perfect for picnics, photography and quiet reflection.</p><span class="fac-tag">Natural Feature</span></div></div>
+            <div class="fac-card aos d3"><img src="../images/Paradise-70.jpg" alt="Farm Tours"><div class="fac-info"><div class="fac-icon"><i class="fas fa-tractor"></i></div><h3 class="fac-name">Working Farm &amp; Tours</h3><p class="fac-desc">Guided tours through vegetable gardens, livestock areas and seasonal harvesting activities for all ages.</p><span class="fac-tag">Daily Tours</span></div></div>
+            <div class="fac-card aos d4"><img src="../images/Paradise-74.jpg" alt="Nature Trails"><div class="fac-info"><div class="fac-icon"><i class="fas fa-hiking"></i></div><h3 class="fac-name">Nature Trails</h3><p class="fac-desc">Marked hiking trails through lush forest, highland meadows and viewpoints overlooking the Nyeri valley.</p><span class="fac-tag">Guided Hikes</span></div></div>
+            <div class="fac-card aos d5"><img src="../images/Paradise-62.jpg" alt="Event Grounds"><div class="fac-info"><div class="fac-icon"><i class="fas fa-campground"></i></div><h3 class="fac-name">Outdoor Event Grounds</h3><p class="fac-desc">Expansive outdoor spaces for team building, church retreats, school trips, family reunions and corporate events.</p><span class="fac-tag">Events &amp; Retreats</span></div></div>
+            <div class="fac-card aos d6"><img src="../images/Paradise-59.jpg" alt="Security"><div class="fac-info"><div class="fac-icon"><i class="fas fa-shield-alt"></i></div><h3 class="fac-name">Secure &amp; Private</h3><p class="fac-desc">24-hour security, ample parking, backup power and a peaceful private setting away from city noise.</p><span class="fac-tag">Always Safe</span></div></div>
+        </div>
+    </section>
+
+    <section class="activities-strip">
+        <div class="act-inner">
+            <h2 class="act-title aos">Things To Do at Paradise Farm</h2>
+            <p class="act-sub aos d2">A full experience for every guest — families, couples and solo travellers</p>
+            <div class="act-grid">
+                <div class="act-item aos d1"><i class="fas fa-tractor"></i><span>Farm Tours</span></div>
+                <div class="act-item aos d2"><i class="fas fa-water"></i><span>Waterfall Visits</span></div>
+                <div class="act-item aos d3"><i class="fas fa-hiking"></i><span>Nature Hikes</span></div>
+                <div class="act-item aos d4"><i class="fas fa-fish"></i><span>Fishing</span></div>
+                <div class="act-item aos d5"><i class="fas fa-fire"></i><span>Campfire Nights</span></div>
+                <div class="act-item aos d6"><i class="fas fa-binoculars"></i><span>Bird Watching</span></div>
+                <div class="act-item aos d1"><i class="fas fa-seedling"></i><span>Gardening</span></div>
+                <div class="act-item aos d2"><i class="fas fa-camera"></i><span>Photography</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="section-header aos">
+            <span class="section-tag" style="color:var(--gold);">Discover</span>
+            <h2 class="section-title white">Farm Gallery</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="gal-scroll-wrap">
+            <div class="gal-scroll">
+            <a href="../images/Paradise-32.jpg" class="gal-item aos">
+                <img src="../images/Paradise-32.jpg" alt="Farm Restaurant">
+                <div class="gal-ov"><span>Farm Restaurant</span></div>
+            </a>
+            <a href="../images/Paradise-33.jpg" class="gal-item aos">
+                <img src="../images/Paradise-33.jpg" alt="Dining Area">
+                <div class="gal-ov"><span>Dining Area</span></div>
+            </a>
+            <a href="../images/Paradise-37.jpg" class="gal-item aos">
+                <img src="../images/Paradise-37.jpg" alt="Executive Cottage">
+                <div class="gal-ov"><span>Executive Cottage</span></div>
+            </a>
+            <a href="../images/Paradise-38.jpg" class="gal-item aos">
+                <img src="../images/Paradise-38.jpg" alt="Cottage Interior">
+                <div class="gal-ov"><span>Cottage Interior</span></div>
+            </a>
+            <a href="../images/Paradise-53.jpg" class="gal-item aos">
+                <img src="../images/Paradise-53.jpg" alt="Farm Activities">
+                <div class="gal-ov"><span>Farm Activities</span></div>
+            </a>
+            <a href="../images/Paradise-58.jpg" class="gal-item aos">
+                <img src="../images/Paradise-58.jpg" alt="Family Cottage">
+                <div class="gal-ov"><span>Family Cottage</span></div>
+            </a>
+            <a href="../images/Paradise-59.jpg" class="gal-item aos">
+                <img src="../images/Paradise-59.jpg" alt="Secure Grounds">
+                <div class="gal-ov"><span>Secure Grounds</span></div>
+            </a>
+            <a href="../images/Paradise-62.jpg" class="gal-item aos">
+                <img src="../images/Paradise-62.jpg" alt="Lush Grounds">
+                <div class="gal-ov"><span>Lush Grounds</span></div>
+            </a>
+            <a href="../images/Paradise-63__1_.jpg" class="gal-item aos">
+                <img src="../images/Paradise-63__1_.jpg" alt="Scenic Views">
+                <div class="gal-ov"><span>Scenic Views</span></div>
+            </a>
+            <a href="../images/Paradise-70.jpg" class="gal-item aos">
+                <img src="../images/Paradise-70.jpg" alt="Working Farm">
+                <div class="gal-ov"><span>Working Farm</span></div>
+            </a>
+            <a href="../images/Paradise-74.jpg" class="gal-item aos">
+                <img src="../images/Paradise-74.jpg" alt="Nature Trails">
+                <div class="gal-ov"><span>Nature Trails</span></div>
+            </a>
+            <a href="../images/Paradise-79.jpg" class="gal-item aos">
+                <img src="../images/Paradise-79.jpg" alt="Farm Life">
+                <div class="gal-ov"><span>Farm Life</span></div>
+            </a>
+            <a href="../images/Paradise-86.jpg" class="gal-item aos">
+                <img src="../images/Paradise-86.jpg" alt="Farm-to-Table">
+                <div class="gal-ov"><span>Farm-to-Table</span></div>
+            </a>
+            <a href="../images/Paradise-100.jpg" class="gal-item aos">
+                <img src="../images/Paradise-100.jpg" alt="Executive Suite">
+                <div class="gal-ov"><span>Executive Suite</span></div>
+            </a>
+            <a href="../images/Paradise-118__1_.jpg" class="gal-item aos">
+                <img src="../images/Paradise-118__1_.jpg" alt="Waterfall">
+                <div class="gal-ov"><span>Waterfall</span></div>
+            </a>
+            <a href="../images/Paradise-129.jpg" class="gal-item aos">
+                <img src="../images/Paradise-129.jpg" alt="Cottage Lounge">
+                <div class="gal-ov"><span>Cottage Lounge</span></div>
+            </a>
+            <a href="../images/Paradise-135.jpg" class="gal-item aos">
+                <img src="../images/Paradise-135.jpg" alt="Twin Room">
+                <div class="gal-ov"><span>Twin Room</span></div>
+            </a>
+            <a href="../images/Paradise-150.jpg" class="gal-item aos">
+                <img src="../images/Paradise-150.jpg" alt="Outdoor Play Area">
+                <div class="gal-ov"><span>Outdoor Play Area</span></div>
+            </a>
+            <a href="../images/Paradise-13.jpg" class="gal-item aos">
+                <img src="../images/Paradise-13.jpg" alt="Standard Room">
+                <div class="gal-ov"><span>Standard Room</span></div>
+            </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2 class="cta-title aos">Escape to Paradise Farm Cottages</h2>
+        <div class="cta-info aos d2">
+            <div class="cta-info-item"><i class="fas fa-map-marker-alt"></i> Nyeri, Kenya</div>
+            <div class="cta-info-item"><i class="fas fa-clock"></i> Check-in: 12:00 PM</div>
+            <div class="cta-info-item"><i class="fas fa-sign-out-alt"></i> Check-out: 10:00 AM</div>
+        </div>
+        <div class="cta-btns">
+            <a href="https://wa.me/254769261077" class="hero-btn btn-wa aos d3"><i class="fab fa-whatsapp"></i> WhatsApp: 0738 014 791</a>
+            <a href="tel:+254769261077" class="hero-btn btn-out aos d4" style="border-color:white;"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="mailto:info@mokawagroup.com" class="hero-btn btn-out aos d5" style="border-color:white;"><i class="fas fa-envelope"></i> info@mokawagroup.com</a>
+        </div>
+    </section>
+
+    <footer class="page-footer">
+        <img src="../images/logo_footer.svg" alt="Mokawa Group">
+        <p>Rooted in Culture, Designed to Deliver</p>
+        <div class="footer-links-row">
+            <a href="silver-rock.html">Silver Rock Resort</a>
+            <a href="paradise-farm.html">Paradise Farm Cottages</a>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Mokawa Group Ltd. All rights reserved. Website managed and developed by Megzier Group Ltd.</div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="">
+        <span class="lightbox-next" onclick="changeImage(1)">&#10095;</span>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/lightbox.js"></script>
+    <script src="../js/scroll-animations.js"></script>
+    <script src="../js/gallery-drag.js"></script>
+    <script>
+        let s=0;const sl=document.querySelectorAll('.hero-slide');
+        setInterval(()=>{sl[s].classList.remove('active');s=(s+1)%sl.length;sl[s].classList.add('active');},5000);
+        const obs=new IntersectionObserver((e)=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in');});},{threshold:0.1});
+        document.querySelectorAll('.aos,.aol,.aor').forEach(el=>obs.observe(el));
+    </script>
+
+    <script>
+    // Paradise Farm hero slider
+    (function(){
+        var slides = document.querySelectorAll('.pf-slide');
+        var dots   = document.querySelectorAll('.pf-dot');
+        var cur = 0;
+        function goTo(n){
+            slides[cur].classList.remove('active');
+            dots[cur].classList.remove('active');
+            cur = n;
+            slides[cur].classList.add('active');
+            dots[cur].classList.add('active');
+        }
+        window.pfGoSlide = goTo;
+        setInterval(function(){ goTo((cur+1)%slides.length); }, 5500);
+    })();
+    </script>
+    </body>
+</html>
